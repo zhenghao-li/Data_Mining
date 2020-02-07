@@ -131,7 +131,7 @@ Data5 <- ABIACities %>%
 Data5 <- filter(Data5, count > 600 & City != "Austin")
 
 
-ggplot(Data5, aes(x=City, y=count)) +
+ggplot(Data5, aes(x=reorder(City, count), y=count)) +
   geom_bar(stat='identity', fill="purple1") +
   coord_flip() +
   #theme(axis.text.x = element_text( angle = 60, hjust = 1)) +
@@ -272,6 +272,7 @@ ggplot(data = QuantData) +
              color="purple3", size = 2) +
   labs(title = "Flights with Departure Delays Higher than the 90th Quantile: 33 Minutes", 
        x= "Month", y = "Departure Delays in Minutes") +
+  scale_x_discrete(limits = month.abb) +
   theme(
     panel.background = element_rect(fill = "white",
                                     colour = "white"),
@@ -317,7 +318,10 @@ pie(data4$count,labels=lbls, col=rainbow(length(lbls)),
 
 
 ## 1.6 Which City Has the Worst Average Departure Delays
-```{r, fig.align='center', warning=FALSE, fig.height=11, fig.width=11}
+
+The map shows the airports whose out of Austin flights have the highest departure delay on average. The darker points indicate higher mean of departure delay. Here, the darkest point on the map is the DSM airport with an average departure delay of more than 125 minutes. 
+
+```{r, fig.align='center', warning=FALSE, fig.height=7, fig.width=11}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
 
@@ -378,11 +382,11 @@ ggplot(data = states) +
                     labs(title="Which Destinations suffer most from Departure Delays", x="Longtitude", y="Latitude", col="Mean")
 ```
 
+To construct the map, we first grouped the ABIA data by destination and calculated the mean for each destination airport. Afterwards, we used the airports data from the MUCflights which includes the airport names abbreviation and the cities where they are located. The airports table has been joined with the “data” table which includes the mean of delayed departure by airports. The common column by which the joined has occurred is the airports name column: “Dest”.  
+
 ## 1.7 When and how long to expect the delays?
 In the following two set of plots, we look at the specific time of the day and length of delay separately for arrivals and departures. The longest and the majority of the delays happened from 12:00 p.m. to 02:00 a.m., with less frequent departure delays after midnight, which aligns with our previous finding that there very rare departing flights at this time of the day.
 
-
-##1.7 When and How Long to Expect the Delays
 
 ```{r, fig.align='center',warning=FALSE}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
