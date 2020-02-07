@@ -78,7 +78,9 @@ ggplot()+geom_histogram(data=ABIA, aes(x=DepTime, col="Departures"), fill="aquam
  theme_bw()
 ```
 
-## 1.6 Which City Has the Most Flights from Austin?
+## 1.2 Which City Has the Most Flights from Austin?
+This figure ranks the cities in the US for the flights that occured from Austin. Not surprisingly, the top three destinations for Austin originated flights were Texas cities which were twice as frequent than the majority of other cities.
+
 ```{r, fig.align='center', warning=FALSE}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
@@ -135,7 +137,9 @@ ggplot(Data5, aes(x=City, y=count)) +
       theme_bw()
 ```
 
-## 1.7 Are Monthly Average Departure Delay and Arrival Delay Different
+## 1.3 What is the best time of year to fly to minimize delays?
+In this figure, we look at the mean of arrival and departure delays separately, to see which months have the highest average delays. In general, it is expected that departing flights have higher average delay time than arrivals. If we look at the months, December is a leading month for both the highest average arrival and departure delays, although we have found before that relatively it didn't have the highest number of flights, which might be explained with the weather conditions of this month. According to the data, the best time of the year to minimize both the departure and arrival delays is September, which has about 3 minutes average departure time and very surprisingly zero average arrival delay time.
+
 ```{r, fig.align='center', warning=FALSE}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
@@ -173,7 +177,7 @@ ggplot(ArrDelaysMean, aes(x=`MonthMMM`)) +
   )
 ```
 
-## 1.2 For Every Weekday, Which Month Is the Worst For Travel
+## 1.4 For Every Weekday, Which Month Is the Worst For Travel
 ```{r, fig.align='center'}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
@@ -228,7 +232,9 @@ ggplot(data,
 
 ```
 
-## 1.3 Which Month Has the Most Extreme Delays
+## 1.5 Which Month Has the Most Extreme Delays
+If we look from the perspective of extreme departure delays which is higher than the 90th percentile - 33 minute of departure delays, December and July will lead in the length of the time of delays, whereas March and June have the highest 12 % probability of extreme delay. That could be explained by our previous finding that these monthes were leaders in the volume of air traffic in ABIA.
+
 ```{r, fig.align='center'}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
@@ -298,7 +304,7 @@ pie(data4$count,labels=lbls, col=rainbow(length(lbls)),
 ```
 
 
-## 1.4 Which City Has the Worst Average Departure Delays
+## 1.6 Which City Has the Worst Average Departure Delays
 ```{r, fig.align='center', warning=FALSE, fig.height=11, fig.width=11}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
@@ -358,9 +364,9 @@ ggplot(data = states) +
                   position = position_jitter(width = 1.1, height = 1.1),
                   point.padding = NA, size=2.5)
 ```
+## 1.7 When and how long to expect the delays?
+In the following two set of plots, we look at the specific time of the day and length of delay separately for arrivals and departures. The longest and the majority of the delays happened from 12:00 p.m. to 02:00 a.m., with less frequent departure delays after midnight, which aligns with our previous finding that there very rare departing flights at this time of the day.
 
-
-##1.6. When and How Long to Expect the Delays
 ```{r, fig.align='center',warning=FALSE}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
@@ -385,7 +391,9 @@ ggplot(data = ABIA) +
        y = "Departure delays in minutes")
 ```
 
-##1.5. Which Delays Happened Most Frequently
+## 1.8. What was the most frequent departure delay time? Early departures?
+If we focus our attention to the varios departure delay time lengths, we will find that according to dataset, more than half of the departing flights from Austin didn't have delays, but on the contrary departed earlier.
+
 ```{r, fig.align='center',warning=FALSE}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
@@ -401,7 +409,9 @@ ggplot(data=DepDelay90quant) +
 
 ```
 
-##1.8. Which Month Has Most Cancellations
+## 1.9 When to expect cancellations?
+If we look at all the cancelled flights in ABIA, we will not be surprised to see March as a leading month in the number of cancelled flights followed by April. Particularly, about 2.5% of flights in March were cancelled.
+
 ```{r, fig.align='center',warning=FALSE}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
