@@ -27,6 +27,8 @@ library(data.table)
 # 1. Data Visualization: Flights at ABIA
 
 ## 1.1 How Does the Airport Traffic Looks Like
+This set of plots looks at the ABIA airport traffic over the course of the year, days of week and time of the days. As expected, the airport seems to be the busiest in June and surprisingly  it has the least amount of flights in November if we consider the Thanksgiving holidays. As expected, the airport was busy in weekdays and had about 25% less flights on Saturday that on weekdays. If we look at the time of day, the airport has accepted the largest amount of flights around 17 p.m. with almost very rare flights after midnight, whereas the flights from Austin flew mostly around 19 p.m. and 13 p.m..
+
 
 ```{r, fig.align='center',warning=FALSE, echo=FALSE}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
