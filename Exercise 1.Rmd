@@ -470,6 +470,7 @@ labs(title="Cancellations across months",
 # K-nearest neighbors
 ## 2.1 Look at Price vs Mileage For Each Trim Level
 
+
 ```{r, fig.align='center'}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/sclass.csv'
 sclass=read.csv(url(urlfile))
@@ -491,9 +492,12 @@ ggplot(data=sclass65AMG)+
    theme(plot.title = element_text(hjust = 0.5))
 
 ```
+At first, let us have a glimpse of the 350 trim level data and 63AMG trim level data. The figure 1 is the scatter plot of price and mileage of 350 trim level cars. In general, the data shows a negative relationship between price and mileage.  However, those points are separated into two parts: the part in the northwestern area and the part at the bottom spreading to the right side. It implies that a line regression may have misspecification for our data. The figure 2 is for the 65AMG trim level cars. It also shows a negative relationship between mileage and price.
 
-## 2.1 The Optimal K Vlaue for 350 Trim Level
-```{r, fig.align='center'}
+## 2.2 The Optimal K Vlaue for 350 Trim Level
+Our general procedure is as follows: first, splitting the data into Train subset and Test subset. Based on the estimates of K-nearest neighbors in Train subset, we get our predications on the Test subset, and then calculate the RMSE (out-of-sample root mean-squared error). 
+
+```{r, fig.aign='center'}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/sclass.csv'
 sclass=read.csv(url(urlfile))
 
@@ -622,8 +626,10 @@ ggplot(opk, aes(Times, Optimal_K))+
   theme(plot.title = element_text(hjust = 0.5))
 
 ```
+For 350 trim level, we started from K=3 (K=2 results in an error) to K=332 (the number of rows in the Train subset). The optimal K is the K corresponding to the smallest RMSE. Since for each time when we randomly select a Train subset, the optimal K varies. To be rigorous, we generated 50 Train subsets, and then got an optimal K for each Train subset. The first figure shows one of our optimal K and how we got it by RMSE. The second figure shows the plot of fitted model for this K. The third figure shows the spread of 50 optimal K’s and its mean (after taking integer). Then we gave the summary of those 50 optimal K values.
 
-## 2.2 The Optimal K Vlaue for 65AMG Trim Level
+## 2.3 The Optimal K Vlaue for 65AMG Trim Level.
+We did the exact same to 65AMG trim level.
 ```{r, fig.align='center'}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/sclass.csv'
 sclass=read.csv(url(urlfile))
@@ -755,3 +761,5 @@ ggplot(opk, aes(Times, Optimal_K))+
   scale_y_continuous(breaks = c(meank, 40, 60)) +
   theme(plot.title = element_text(hjust = 0.5))
 ```
+
+Comparing those two summaries of optimal K for 350 trim level and 65AMG trim level, the 350 trim level has higher mean, median, and variance. The main reason is probably that the data of 350 trim level is more spreading than the data of 65AMG trim level. So to fit the data, 350 trim level need near points more far away, which requires more nearest points to lower the RMSE as much as possible.
