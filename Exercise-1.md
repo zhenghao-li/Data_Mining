@@ -97,7 +97,20 @@ leaders in the volume of air traffic in ABIA.
 
 ## 1.6 Which City Has the Worst Average Departure Delays
 
+The map shows the airports whose out of Austin flights have the highest
+departure delay on average. The darker points indicate higher mean of
+departure delay. Here, the darkest point on the map is the DSM airport
+with an average departure delay of more than 125 minutes.
+
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+
+To construct the map, we first grouped the ABIA data by destination and
+calculated the mean for each destination airport. Afterwards, we used
+the airports data from the MUCflights which includes the airport names
+abbreviation and the cities where they are located. The airports table
+has been joined with the “data” table which includes the mean of delayed
+departure by airports. The common column by which the joined has
+occurred is the airports name column: “Dest”.
 
 ## 1.7 When and how long to expect the delays?
 
@@ -107,8 +120,6 @@ longest and the majority of the delays happened from 12:00 p.m. to 02:00
 a.m., with less frequent departure delays after midnight, which aligns
 with our previous finding that there very rare departing flights at this
 time of the day.
-
-\#\#1.7 When and How Long to Expect the Delays
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
