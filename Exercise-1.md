@@ -144,6 +144,7 @@ were cancelled.
 ## 2.1 Look at Price vs Mileage For Each Trim Level
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /><img src="Exercise-1_files/figure-gfm/unnamed-chunk-14-2.png" style="display: block; margin: auto;" />
+
 At first, let us have a glimpse of the 350 trim level data and 63AMG
 trim level data. The figure 1 is the scatter plot of price and mileage
 of 350 trim level cars. In general, the data shows a negative
@@ -166,9 +167,9 @@ and then calculate the RMSE (out-of-sample root mean-squared error).
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##    3.00   11.25   15.00   21.02   18.75   76.00
+    ##    3.00   11.25   16.00   25.02   42.00   75.00
 
-    ## [1] 370.6731
+    ## [1] 375.7751
 
 For 350 trim level, we started from K=3 (K=2 results in an error) to
 K=332 (the number of rows in the Train subset). The optimal K is the K
@@ -188,9 +189,9 @@ We did the exact same to 65AMG trim level.
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##    3.00    7.00   13.00   17.38   23.75   52.00
+    ##    3.00    7.00   12.00   16.82   23.00   60.00
 
-    ## [1] 177.7506
+    ## [1] 174.518
 
 Comparing those two summaries of optimal K for 350 trim level and 65AMG
 trim level, the 350 trim level has higher mean, median, and variance

@@ -514,6 +514,7 @@ ggplot(data=sclass65AMG)+
    theme(plot.title = element_text(hjust = 0.5))
 
 ```
+
 At first, let us have a glimpse of the 350 trim level data and 63AMG trim level data. The figure 1 is the scatter plot of price and mileage of 350 trim level cars. In general, the data shows a negative relationship between price and mileage.  However, those points are separated into two parts: the part in the northwestern area and the part at the bottom spreading to the right side. It implies that a line regression may have misspecification for our data. The figure 2 is for the 65AMG trim level cars. It also shows a negative relationship between mileage and price.
 
 ## 2.2 The Optimal K Vlaue for 350 Trim Level
