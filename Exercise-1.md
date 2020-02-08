@@ -4,7 +4,7 @@ By Eliza Malinova, Zhenghao Li, and Raushan Baizakova
 
 # 1\. Data Visualization: Flights at ABIA
 
-## 1.1 How Does the Airport Traffic Looks Like?
+## 1.1 How Does the Airport Traffic Look Like?
 
 This set of plots looks at the ABIA airport traffic over the course of
 the year, days of week and time of the days. As expected, the airport
@@ -34,18 +34,29 @@ the majority of other cities.
 ## 1.3 Are Monthly Average Departure Delay and Arrival Delay Different
 
 In this figure, we look at the mean of arrival and departure delays
-separately, to see which months have the highest average delays. In
-general, it is expected that departing flights have higher average delay
-time than arrivals. If we look at the months, December is a leading
-month for both the highest average arrival and departure delays,
-although we have found before that relatively it didn’t have the highest
-number of flights, which might be explained with the weather conditions
-of this month. According to the data, the best time of the year to
-minimize both the departure and arrival delays is September, which has
-about 3 minutes average departure time and very surprisingly zero
-average arrival delay time.
+separately, to see which months have the highest average delays . The
+graph reveals a positive relationship between arrival and departure
+delays. As departure delays increase or decrease in a given month,
+arrival delays increase/ decrease, respectively. As expected, if a
+traveler experiences a delay in his out of Austin flight, there is a
+great possibility that he or she will be faced with an arrival delay as
+well.
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+
+If we look at the months, December is a leading month for both the
+highest average arrival and departure delays, although we have found
+before that relatively it didn’t have the highest number of flights,
+which might be explained with the weather conditions of this month.
+According to the data, the best time of the year to minimize both the
+departure and arrival delays is September, which has about 3 minutes
+average departure time and very surprisingly zero average arrival delay
+time.
+
+Moreover, considering the highly positive correlation between departure
+delays and arrival delays, as well as the fact of departure delays are
+usual longer, the focus of following graphs will be on the departure
+delays.
 
 ## 1.4 For Every Weekday, Which Month Is the Worst For Travel
 
@@ -167,9 +178,9 @@ and then calculate the RMSE (out-of-sample root mean-squared error).
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##    3.00   11.25   16.00   25.02   42.00   75.00
+    ##    5.00   11.25   14.50   23.78   38.25   70.00
 
-    ## [1] 375.7751
+    ## [1] 385.6445
 
 For 350 trim level, we started from K=3 (K=2 results in an error) to
 K=332 (the number of rows in the Train subset). The optimal K is the K
@@ -189,13 +200,14 @@ We did the exact same to 65AMG trim level.
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##    3.00    7.00   12.00   16.82   23.00   60.00
+    ##    3.00   10.25   19.50   21.82   30.50   63.00
 
-    ## [1] 174.518
+    ## [1] 242.2322
 
 Comparing those two summaries of optimal K for 350 trim level and 65AMG
 trim level, the 350 trim level has higher mean, median, and variance
-(shown above). The main reason is probably that the data of 350 trim
-level is more spreading than the data of 65AMG trim level. So to fit the
-data, 350 trim level need near points more far away, which requires more
-nearest points to lower the RMSE as much as possible.
+that are shown in grey areas above. The main reason is probably that the
+data of 350 trim level is more spreading than the data of 65AMG trim
+level. So to fit the data, 350 trim level need near points more far
+away, which requires more nearest points to lower the RMSE as much as
+possible.
