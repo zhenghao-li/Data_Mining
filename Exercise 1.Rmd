@@ -26,8 +26,8 @@ library(data.table)
 
 # 1. Data Visualization: Flights at ABIA
 
-## 1.1 How Does the Airport Traffic Looks Like
-This set of plots looks at the ABIA airport traffic over the course of the year, days of week and time of the days. As expected, the airport seems to be the busiest in June and surprisingly  it has the least amount of flights in November if we consider the Thanksgiving holidays. As expected, the airport was busy in weekdays and had about 25% less flights on Saturday that on weekdays. If we look at the time of day, the airport has accepted the largest amount of flights around 17 p.m. with almost very rare flights after midnight, whereas the flights from Austin flew mostly around 19 p.m. and 13 p.m..
+## 1.1 How Does the Airport Traffic Looks Like?
+This set of plots looks at the ABIA airport traffic over the course of the year, days of week and time of the days. As expected, the airport seems to be the busiest in June and surprisingly  it has the least amount of flights in November if we consider the Thanksgiving holidays. As expected, the airports are busy in weekdays and had about 25% less flights on Saturday that on weekdays. If we look at the time of day, the airport has accepted the largest amount of flights around 17 p.m. with almost very rare flights after midnight, whereas the flights from Austin fly mostly around 19 p.m. and 13 p.m..
 
 
 ```{r, fig.align='center',warning=FALSE, echo=FALSE}
@@ -38,9 +38,13 @@ ggplot()+geom_bar(data=ABIA, aes(x=Month), fill="deepskyblue1",  alpha = 0.3)+
   labs(title="Airport traffic over the year", 
        x = "Month", 
        y = "Number of flights")+
-scale_x_continuous(breaks = seq(1, 12))+
+scale_x_discrete(limits = c("Jan", "Feb", "Mar","Apr",
+                              "May", "Jun", "Jul", "Aug",
+                              "Sept", "Oct", "Nov", "Dec"))+
 scale_y_continuous(breaks = seq(0, 100000, by = 1000))+
-  theme_bw()
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 ```
 
 ```{r, fig.align='center',warning=FALSE, echo=FALSE}
@@ -55,12 +59,15 @@ Weekdays <- ABIA %>%
 ggplot(Weekdays, aes(x=DayOfWeek, y=count)) +
   geom_point() + 
   geom_segment( aes(x=DayOfWeek, xend=DayOfWeek, y=10000, yend=count))+
-  labs(title="Airport Traffic by days of week", 
-       x = "Days of week", 
-       y = "Number of flights")+
-  scale_x_continuous(breaks = seq(1, 7))+
+  labs(title="Airport Traffic by Days of Week", 
+       x = "Days of Week", 
+       y = "Number of Flights")+
+  scale_x_continuous(breaks = c(1, 2, 3, 4, 5,
+                       6, 7), labels = c("Mon", "Tue", "Wen", "Thu", "Fri",
+  "Sat", "Sun"))+
   scale_y_continuous(breaks = seq(10000, 15000, by = 1000))+
-   theme_bw()
+   theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 ```{r, fig.align='center',warning=FALSE, echo=FALSE, message = FALSE}
@@ -71,16 +78,21 @@ cols <- c("Departures" = "blue", "Arrivals" = "red")
 ggplot()+geom_histogram(data=ABIA, aes(x=DepTime, col="Departures"), fill="aquamarine1",  alpha = 0.3)+
   geom_histogram(data=ABIA, aes(x=ArrTime, col = "Arrivals"),fill="aquamarine1",  alpha = 0.3)+
   scale_colour_manual(name = " ", values = cols)+
-  scale_x_continuous(breaks = seq(0, 2400, by = 200))+
-  labs(title="Airport traffic by hour", 
-       x = "Time of the day", 
-       y = "Number of flights")+
- theme_bw()
+  scale_x_continuous(breaks = c(0, 200, 400, 600, 800,
+                       1000, 1200, 1400, 1600, 1800, 2000,
+                       2200, 2400), labels = c("12 AM", "2 AM", "4 AM", "6 AM", "8 AM",
+  "10 AM", "12 PM", "2 PM", "4 PM", "6 PM", "8 PM",
+  "10 PM", "12 AM"))+
+  labs(title="Airport Traffic by Hour", 
+       x = "Time of the Day", 
+       y = "Number of Flights")+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(legend.position = 'bottom')
 ```
 
 ## 1.2 Which City Has the Most Flights from Austin?
 
-The map shows the airports whose out of Austin flights have the highest departure delay on average. The darker points indicate higher mean of departure delay. Here, the darkest point on the map is the DSM airport with an average departure delay of more than 125 minutes. 
 
 This figure ranks the cities in the US for the flights that occured from Austin. Not surprisingly, the top three destinations for Austin originated flights were Texas cities which were twice as frequent than the majority of other cities.
 
@@ -136,11 +148,11 @@ ggplot(Data5, aes(x=reorder(City, count), y=count)) +
   coord_flip() +
   #theme(axis.text.x = element_text( angle = 60, hjust = 1)) +
   labs(title = "Flights to and from Different Destinations", 
-       y = "Number of Flights") +
-      theme_bw()
+       y = "Number of Flights", x="Cities") +
+      theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
-To construct the map, we first grouped the ABIA data by destination and calculated the mean for each destination airport. Afterwards, we used the airports data from the MUCflights which includes the airport names abbreviation and the cities where they are located. The airports table has been joined with the “data” table which includes the mean of delayed departure by airports. The common column by which the joined has occurred is the airports name column: “Dest”.  
 
 ## 1.3 Are Monthly Average Departure Delay and Arrival Delay Different
 In this figure, we look at the mean of arrival and departure delays separately, to see which months have the highest average delays. In general, it is expected that departing flights have higher average delay time than arrivals. If we look at the months, December is a leading month for both the highest average arrival and departure delays, although we have found before that relatively it didn't have the highest number of flights, which might be explained with the weather conditions of this month. According to the data, the best time of the year to minimize both the departure and arrival delays is September, which has about 3 minutes average departure time and very surprisingly zero average arrival delay time.
@@ -179,7 +191,9 @@ ggplot(ArrDelaysMean, aes(x=`MonthMMM`)) +
                                     colour = "grey"), 
     panel.grid.minor = element_line(size = 0.25, linetype = 'solid',
                                     colour = "grey")
-  )
+  )+
+   theme(legend.position = 'top')+
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 ## 1.4 For Every Weekday, Which Month Is the Worst For Travel
@@ -234,7 +248,8 @@ ggplot(data,
     strip.text = element_text(
       color = "black", face = "bold.italic"
     )
-  )
+  )+
+  theme(plot.title = element_text(hjust = 0.5))
 #+theme(panel.spacing = unit(2, "lines"))
 
 ```
@@ -316,6 +331,7 @@ pie(data4$count,labels=lbls, col=rainbow(length(lbls)),
     main="The Probability of Extreme Delays in Each Month")
 ```
 
+The pie chart displays the probability that the traveler will experience a delay higher than 33 minutes (the 90th percentile). After filtering out the delays higher than the the 90th Quantile for the previous graph, we used that table to count how many flights are in each in month and divided that by total flights. In this way, the traveler is able to check what is the probability of having a flight that will be delayed for more than 33 minutes.  
 
 ## 1.6 Which City Has the Worst Average Departure Delays
 
@@ -379,12 +395,13 @@ ggplot(data = states) +
   geom_text_repel(data = JoinedTableAirp, aes(x=Longitude, y=Latitude, label=Dest),
                   position = position_jitter(width = 1.1, height = 1.1),
                   point.padding = NA, size=2.5) +
-                    labs(title="Which Destinations suffer most from Departure Delays", x="Longtitude", y="Latitude", col="Mean")
+                    labs(title="Which Destinations suffer most from Departure Delays", x="Longtitude", y="Latitude", col="Mean")+
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 To construct the map, we first grouped the ABIA data by destination and calculated the mean for each destination airport. Afterwards, we used the airports data from the MUCflights which includes the airport names abbreviation and the cities where they are located. The airports table has been joined with the “data” table which includes the mean of delayed departure by airports. The common column by which the joined has occurred is the airports name column: “Dest”.  
 
-## 1.7 When and how long to expect the delays?
+## 1.7 When and How Long to Expect the Delays?
 In the following two set of plots, we look at the specific time of the day and length of delay separately for arrivals and departures. The longest and the majority of the delays happened from 12:00 p.m. to 02:00 a.m., with less frequent departure delays after midnight, which aligns with our previous finding that there very rare departing flights at this time of the day.
 
 
@@ -394,10 +411,15 @@ ABIA=read.csv(url(urlfile))
 ##Plot 11 .The Distribution of arrival delays in minutes throughout the day
 ggplot(data = ABIA) + 
   geom_point(mapping = aes(x = ArrTime, y = ArrDelay))+
-  scale_x_continuous(breaks = seq(0, 2400, by = 200))+
+   scale_x_continuous(breaks = c(0, 200, 400, 600, 800,
+                       1000, 1200, 1400, 1600, 1800, 2000,
+                       2200, 2400), labels = c("12 AM", "2 AM", "4 AM", "6 AM", "8 AM",
+  "10 AM", "12 PM", "2 PM", "4 PM", "6 PM", "8 PM",
+  "10 PM", "12 AM"))+
   labs(title="Distribution of arrival delays in minutes throughout the day", 
        x = "Time of the day", 
-       y = "Arrival delays in minutes")
+       y = "Arrival delays in minutes")+
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 ```{r, fig.align='center',warning=FALSE, echo=FALSE}
@@ -406,35 +428,41 @@ ABIA=read.csv(url(urlfile))
 ##Plot 12.The Distribution of Departure delays in minutes throughout the day
 ggplot(data = ABIA) + 
   geom_point(mapping = aes(x = DepTime, y = DepDelay))+
-  scale_x_continuous(breaks = seq(0, 2400, by = 200))+
+   scale_x_continuous(breaks = c(0, 200, 400, 600, 800,
+                       1000, 1200, 1400, 1600, 1800, 2000,
+                       2200, 2400), labels = c("12 AM", "2 AM", "4 AM", "6 AM", "8 AM",
+  "10 AM", "12 PM", "2 PM", "4 PM", "6 PM", "8 PM",
+  "10 PM", "12 AM"))+
   labs(title="Distribution of departure delays in minutes throughout the day", 
        x = "Time of the day", 
-       y = "Departure delays in minutes")
+       y = "Departure delays in minutes")+
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 
 
 ## 1.8. What Is The Frequency of the Difference Between Departure Time and Schedule Time
-If we focus our attention to the varios departure delay time lengths, we will find that according to dataset, more than half of the departing flights from Austin didn't have delays, but on the contrary departed earlier.
+After removing the departure delays above 95th percentile and those below 5th percentile, we get the distribution of departure delays. If we focus our attention to the varios departure delay time lengths, we will find that according to dataset, more than half of the departing flights from Austin didn't have delays, but on the contrary departed earlier.
 
 
-```{r, fig.align='center',warning=FALSE}
+```{r, fig.align='center',warning=FALSE, fig.width=12}
 urlfile='https://raw.githubusercontent.com/jgscott/ECO395M/master/data/ABIA.csv'
 ABIA=read.csv(url(urlfile))
 ##Graph 10.Frequency distribution of the 90 percent of the departure Delays by minutes
 DepDelay90quant <- filter(ABIA, DepDelay <= 62, DepDelay >= -8)
 ggplot(data=DepDelay90quant) + 
   geom_histogram(aes(x=DepDelay),  binwidth = 0.5)+
-  labs(title="90 percentile of Departure Delays", 
+  labs(title="Distribution of Departure Delays Between 5th Percentile and 95th Percentile", 
        x = "Departure delays in minutes", 
        y = "frequency")+
   scale_x_continuous(breaks = seq(-8, 62, by = 2))+
-  scale_y_continuous(breaks = seq(0, 89134, by = 1000))
+  scale_y_continuous(breaks = seq(0, 89134, by = 1000))+
+  theme(plot.title = element_text(hjust = 0.5))
 
 ```
 
 
-##1.9 Which Month Has Most Cancellations
+## 1.9 Which Month Has Most Cancellations
 
 If we look at all the cancelled flights in ABIA, we will not be surprised to see March as a leading month in the number of cancelled flights followed by April. Particularly, about 2.5% of flights in March were cancelled.
 
@@ -452,13 +480,16 @@ ggplot(Cancellations, aes(x=Month, y=Cancelled1)) +
 labs(title="Cancellations across months", 
      x = "Month", 
      y = "Number of cancelled flights")+
-  scale_x_continuous(breaks = seq(1, 12))+
-  scale_y_continuous(breaks = seq(0, 300, by = 25))
+   scale_x_discrete(limits = c("Jan", "Feb", "Mar","Apr",
+                              "May", "Jun", "Jul", "Aug",
+                              "Sept", "Oct", "Nov", "Dec"))+
+  scale_y_continuous(breaks = seq(0, 300, by = 25))+
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 
 
-# K-nearest neighbors
+# 2. K-nearest neighbors
 ## 2.1 Look at Price vs Mileage For Each Trim Level
 
 
@@ -611,12 +642,15 @@ meank=round(mean(opk$`Optimal_K`),0)
 ggplot(opk, aes(Times, Optimal_K))+
   geom_point(colour="blue", size=2)+
   geom_hline(yintercept = meank, color="red", linetype="dashed", size=1)+
-  labs(title="How Optimal K Varies for 350 Trim Level")+
+  labs(title="How Optimal K Varies for Different Train Data")+
   theme_bw()+
   scale_y_continuous(breaks = c(meank, 40, 60)) +
   theme(plot.title = element_text(hjust = 0.5))
 
+summary(opk$Optimal_K)
+var(opk$Optimal_K)
 ```
+
 For 350 trim level, we started from K=3 (K=2 results in an error) to K=332 (the number of rows in the Train subset). The optimal K is the K corresponding to the smallest RMSE. Since for each time when we randomly select a Train subset, the optimal K varies. To be rigorous, we generated 50 Train subsets, and then got an optimal K for each Train subset. The first figure shows one of our optimal K and how we got it by RMSE. The second figure shows the plot of fitted model for this K. The third figure shows the spread of 50 optimal K’s and its mean (after taking integer). Then we gave the summary of those 50 optimal K values.
 
 ## 2.3 The Optimal K Vlaue for 65AMG Trim Level.
@@ -747,10 +781,13 @@ meank=round(mean(opk$`Optimal_K`),0)
 ggplot(opk, aes(Times, Optimal_K))+
   geom_point(colour="blue", size=2)+
   geom_hline(yintercept = meank, color="red", linetype="dashed", size=1)+
-  labs(title="How Optimal K Varies for 65AMG Trim Level")+
+  labs(title="How Optimal K Varies for Different Train Data")+
   theme_bw()+
   scale_y_continuous(breaks = c(meank, 40, 60)) +
   theme(plot.title = element_text(hjust = 0.5))
+
+summary(opk$Optimal_K)
+var(opk$Optimal_K)
 ```
 
-Comparing those two summaries of optimal K for 350 trim level and 65AMG trim level, the 350 trim level has higher mean, median, and variance. The main reason is probably that the data of 350 trim level is more spreading than the data of 65AMG trim level. So to fit the data, 350 trim level need near points more far away, which requires more nearest points to lower the RMSE as much as possible.
+Comparing those two summaries of optimal K for 350 trim level and 65AMG trim level, the 350 trim level has higher mean, median, and variance (shown above). The main reason is probably that the data of 350 trim level is more spreading than the data of 65AMG trim level. So to fit the data, 350 trim level need near points more far away, which requires more nearest points to lower the RMSE as much as possible.

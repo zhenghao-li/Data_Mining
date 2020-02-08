@@ -4,17 +4,17 @@ By Eliza Malinova, Zhenghao Li, and Raushan Baizakova
 
 # 1\. Data Visualization: Flights at ABIA
 
-## 1.1 How Does the Airport Traffic Looks Like
+## 1.1 How Does the Airport Traffic Looks Like?
 
 This set of plots looks at the ABIA airport traffic over the course of
 the year, days of week and time of the days. As expected, the airport
 seems to be the busiest in June and surprisingly it has the least amount
 of flights in November if we consider the Thanksgiving holidays. As
-expected, the airport was busy in weekdays and had about 25% less
+expected, the airports are busy in weekdays and had about 25% less
 flights on Saturday that on weekdays. If we look at the time of day, the
 airport has accepted the largest amount of flights around 17 p.m. with
 almost very rare flights after midnight, whereas the flights from Austin
-flew mostly around 19 p.m. and 13 p.m..
+fly mostly around 19 p.m. and 13 p.m..
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 
@@ -24,25 +24,12 @@ flew mostly around 19 p.m. and 13 p.m..
 
 ## 1.2 Which City Has the Most Flights from Austin?
 
-The map shows the airports whose out of Austin flights have the highest
-departure delay on average. The darker points indicate higher mean of
-departure delay. Here, the darkest point on the map is the DSM airport
-with an average departure delay of more than 125 minutes.
-
 This figure ranks the cities in the US for the flights that occured from
 Austin. Not surprisingly, the top three destinations for Austin
 originated flights were Texas cities which were twice as frequent than
 the majority of other cities.
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
-
-To construct the map, we first grouped the ABIA data by destination and
-calculated the mean for each destination airport. Afterwards, we used
-the airports data from the MUCflights which includes the airport names
-abbreviation and the cities where they are located. The airports table
-has been joined with the “data” table which includes the mean of delayed
-departure by airports. The common column by which the joined has
-occurred is the airports name column: “Dest”.
 
 ## 1.3 Are Monthly Average Departure Delay and Arrival Delay Different
 
@@ -95,6 +82,14 @@ leaders in the volume of air traffic in ABIA.
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
+The pie chart displays the probability that the traveler will experience
+a delay higher than 33 minutes (the 90th percentile). After filtering
+out the delays higher than the the 90th Quantile for the previous graph,
+we used that table to count how many flights are in each in month and
+divided that by total flights. In this way, the traveler is able to
+check what is the probability of having a flight that will be delayed
+for more than 33 minutes.
+
 ## 1.6 Which City Has the Worst Average Departure Delays
 
 The map shows the airports whose out of Austin flights have the highest
@@ -112,7 +107,7 @@ has been joined with the “data” table which includes the mean of delayed
 departure by airports. The common column by which the joined has
 occurred is the airports name column: “Dest”.
 
-## 1.7 When and how long to expect the delays?
+## 1.7 When and How Long to Expect the Delays?
 
 In the following two set of plots, we look at the specific time of the
 day and length of delay separately for arrivals and departures. The
@@ -127,14 +122,15 @@ time of the day.
 
 ## 1.8. What Is The Frequency of the Difference Between Departure Time and Schedule Time
 
-If we focus our attention to the varios departure delay time lengths, we
-will find that according to dataset, more than half of the departing
-flights from Austin didn’t have delays, but on the contrary departed
-earlier.
+After removing the departure delays above 95th percentile and those
+below 5th percentile, we get the distribution of departure delays. If we
+focus our attention to the varios departure delay time lengths, we will
+find that according to dataset, more than half of the departing flights
+from Austin didn’t have delays, but on the contrary departed earlier.
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
-\#\#1.9 Which Month Has Most Cancellations
+## 1.9 Which Month Has Most Cancellations
 
 If we look at all the cancelled flights in ABIA, we will not be
 surprised to see March as a leading month in the number of cancelled
@@ -143,7 +139,7 @@ were cancelled.
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
-# K-nearest neighbors
+# 2\. K-nearest neighbors
 
 ## 2.1 Look at Price vs Mileage For Each Trim Level
 
@@ -168,6 +164,12 @@ and then calculate the RMSE (out-of-sample root mean-squared error).
 ![](Exercise-1_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->![](Exercise-1_files/figure-gfm/unnamed-chunk-15-2.png)<!-- -->
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ##    3.00   11.25   15.00   21.02   18.75   76.00
+
+    ## [1] 370.6731
+
 For 350 trim level, we started from K=3 (K=2 results in an error) to
 K=332 (the number of rows in the Train subset). The optimal K is the K
 corresponding to the smallest RMSE. Since for each time when we randomly
@@ -185,9 +187,14 @@ We did the exact same to 65AMG trim level.
 
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ##    3.00    7.00   13.00   17.38   23.75   52.00
+
+    ## [1] 177.7506
+
 Comparing those two summaries of optimal K for 350 trim level and 65AMG
-trim level, the 350 trim level has higher mean, median, and variance.
-The main reason is probably that the data of 350 trim level is more
-spreading than the data of 65AMG trim level. So to fit the data, 350
-trim level need near points more far away, which requires more nearest
-points to lower the RMSE as much as possible.
+trim level, the 350 trim level has higher mean, median, and variance
+(shown above). The main reason is probably that the data of 350 trim
+level is more spreading than the data of 65AMG trim level. So to fit the
+data, 350 trim level need near points more far away, which requires more
+nearest points to lower the RMSE as much as possible.
