@@ -178,9 +178,9 @@ and then calculate the RMSE (out-of-sample root mean-squared error).
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##    5.00   11.25   14.50   23.78   38.25   70.00
+    ##    5.00   11.00   15.50   24.98   39.50   77.00
 
-    ## [1] 385.6445
+    ## [1] 450.3465
 
 For 350 trim level, we started from K=3 (K=2 results in an error) to
 K=332 (the number of rows in the Train subset). The optimal K is the K
@@ -200,9 +200,9 @@ We did the exact same to 65AMG trim level.
 <img src="Exercise-1_files/figure-gfm/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##    3.00   10.25   19.50   21.82   30.50   63.00
+    ##     3.0     6.0    11.0    14.9    20.5    54.0
 
-    ## [1] 242.2322
+    ## [1] 150.1735
 
 Comparing those two summaries of optimal K for 350 trim level and 65AMG
 trim level, the 350 trim level has higher mean, median, and variance
