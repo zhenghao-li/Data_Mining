@@ -27,8 +27,8 @@ library(MatrixModels)
 library(sjlabelled)
 ```
 
-# 1. Saratoga house prices
-## 1.1 Select a Good Model for Predicting Prices
+# Problem 1. Saratoga house prices
+## Question 1: Select a Good Linear Model to Predict Housing Prices
 
 In this exercise, the purpose is to choose a model good at predicting housing prices based on the dataset Saratoga. The dataset has 1728 observations and 16 variables including price, land value, age, rooms, and other house characteristics. The target variable is price. Before building models, there is an issue about the target variable: a housing price consists of the land value and the house value. The land value is predetermined before a house is built and is less likely to be affected by those house characteristics. Moreover, the land value is an intrinsic part of a housing price. So, generally, the land value should be excluded from our feature variables to avoid regressing the target variable on a variable that is a part of the target variable itself. To tackle with this issue, we used the following procedure.
 
@@ -226,7 +226,7 @@ Therefore, based on the average out-of-sample RMSE, we can choose either House V
 
 Note that since for HouseValue models predict house values, we need to add those corresponding land values to predicted house values when predicting prices
 
-## 1.2 Those Extremely Strong Price Drivers
+## Question 2: Which Variables or Interactions Drive Prices More?
 Now we decide to prefer a more parsimonious model hence choose House Value Model 1. To see which variables and interactions are extremely strong in driving the price, we list the estimates of coefficients in the Table 1.5.
 
 ```{r, results='asis'}
@@ -247,8 +247,7 @@ LoopRMSE = do(50)*{
 }
 
 tab_model(lm_houseValue, transform = NULL, dv.labels = 
-            c( "House Value Model 1"), string.est = "Coefficients", show.ci=0.95, title = "Table 1.5 Coefficients of 
-          House Value Model 1", show.intercept=FALSE, show.obs= FALSE, show.r2= FALSE)
+            c( "House Value Model 1"), string.est = "Coefficients", show.ci=0.95, title = "**Table 1.5 Coefficients of House Value Model 1**",  show.obs= FALSE, show.r2= FALSE)
 
 
     
@@ -359,7 +358,7 @@ kable(RMSEMeanDiff, caption = "**Table 1.6 Use Changes in RMSE to Evaluate Price
 From the difference in RMSE, we can see that four variables have very strong impact on prices: waterfront,
 NewConstruction, livingArea * heating, and livingArea * fuel. But other variables are not strong drivers of prices from the a perspective of RMSE.
 
-## 1.3 The Performance of KNN Method
+## Question 3: The Performance of KNN Method
 Now we use KNN regression to predict prices. The approach is similar: first, use price as the target variable, then use house value as the target variable, at last choose the model (i.e. choose the value of K) with a lower RMSE and compare it with the RMSE we have gotten in Q 1.1.
 A special aspect in KNN regression is that since the distances between K points are very sensitive to the magnitudes of variables, all the variables have to be standardized by their standard deviations at first. Except that, the whole procedure is the same as in linear regression.
 Table 6 shows the lowest average out-of-sample RMSE and corresponding K values for price KNN model and house value KNN model. We also show how the average out-of-sample RMSE vary with the different values of K in Graph 1 (for price model) and Graph 2 (for house value model).
@@ -454,7 +453,6 @@ We performed 100 simulations on each model and computed the average accuracy out
 
 The following table, Table 2.1, displays the average out of sample accuracies and classification errors for each of the three models.
 
-
 ```{r setup 2.1.1, warning=FALSE, echo=FALSE}
 #train a good logit model on the raw data
 #Check the Accuracy of each Model; Split up the model into Accuracy&Error table vs RMSE Table 
@@ -508,15 +506,13 @@ Means = data.table::data.table("Accuracy Out Model 1" = round(mean(RecallRespons
 
 view(Means)
 
-
-library(data.table)
 means_transpose <- t(Means)
 
 view(means_transpose)
 
-kable(means_transpose[1:6,], col.names = c("Mean"), caption = "**Average Model Performance Rates**", caption_format = c("bold", "underline")) %>%
-  kable_styling(bootstrap_options = "striped", full_width = F) %>%
-  footnote(symbol = "Table2.1")
+kable(means_transpose[1:6,], col.names = c("Mean"), caption = "**Table 2.1 Average Model Performance Rates**", caption_format = c("bold", "underline")) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F) #%>%
+  #footnote(symbol = "Table2.1")
 ```
 
 We use two indicators to determine which radiologists are more clinically conservative and which are less. The first approach is to examine the radiologists’ coefficients and compare them while holding all risk factors constant. The second approach is to compare their overall probabilities of recalling a patient. 
@@ -534,19 +530,20 @@ logit_brca_rd2 = glm(recall ~ (age + symptoms)^2+ history  + menopause + density
                      data=brca,
                      family ='binomial')
 
-tab_model(logit_brca_rd1, logit_brca_rd2, transform = NULL, dv.labels = c("Model 2", "Model 3"), show.ci=FALSE, show.r2 = FALSE, show.obs = FALSE, string.est = "Coefficients")
+tab_model(logit_brca_rd1, logit_brca_rd2, transform = NULL, dv.labels = c("Model 2", "Model 3"), show.ci=FALSE, show.r2 = FALSE, show.obs = FALSE, string.est = "Coefficients", title = "**Table 2.2 Coefficients of Model 2 and Model 3**")
 
 ```
 
-Table 2.2 displays the odds ratios resulted from regressing model 2. Considering the fact that radiologist 13 is the base for the logit model, radiologist 89 and 66 both increase the odds of recall compared to radiologist 13, while radiologists 95 and 34 both decrease the odds of recall compared to radiologist. Hence, observing the odds ratios of each radiologist, the ranking of radiologists from most clinically conservative to least clinically conservative is as follows: radiologist 89, radiologist 66, radiologist 13, radiologist 95, radiologist 34. 
+Table 2.3 displays the odds ratios resulted from regressing model 2. Considering the fact that radiologist 13 is the base for the logit model, radiologist 89 and 66 both increase the odds of recall compared to radiologist 13, while radiologists 95 and 34 both decrease the odds of recall compared to radiologist. Hence, observing the odds ratios of each radiologist, the ranking of radiologists from most clinically conservative to least clinically conservative is as follows: radiologist 89, radiologist 66, radiologist 13, radiologist 95, radiologist 34. 
 
-Table 2.2 confirms the above conclusions and shows odds ratios, confidence intervals and p-values estimated from regressing model 2. 
+Table 2.3 confirms the above conclusions and shows odds ratios, confidence intervals and p-values estimated from regressing model 2.
+
 ```{r setup 2.1.3, warning=FALSE, echo=FALSE}
 brca <- read.csv("https://raw.githubusercontent.com/jgscott/ECO395M/master/data/brca.csv")
 logit_brca_rd1 = glm(recall ~ age + history + symptoms + menopause + density + radiologist,  
                      data=brca,
                      family ='binomial')
-tab_model(logit_brca_rd1, show.r2 = FALSE, show.obs = FALSE, dv.labels = "Table 2.2: Recall")
+tab_model(logit_brca_rd1, show.r2 = FALSE, show.obs = FALSE, title = "**Table 2.3 Odds Ratios of Model 2**")
 
 ```
 
@@ -554,7 +551,7 @@ To address the problem that radiologists do not see the same patients we used co
 
 To find the average predicted probabilities, we took the mean of predicted probabilities for each radiologist over the patient data set. 
 
-Table 2.2 shows the average predicted probability of recalling a patient for each Radiologist. 
+Table 2.4 shows the average predicted probability of recalling a patient for each Radiologist. 
 
 ```{r setup 2.1.4, warning=FALSE, echo=FALSE}
 brca <- read.csv("https://raw.githubusercontent.com/jgscott/ECO395M/master/data/brca.csv")
@@ -586,12 +583,12 @@ MeanProbRadiologist2 = c("Radiologist 13" = mean(phatpred_logitBrca1),
                          "Radiologist 89" = mean(phatpred_logitBrca4), 
                          "Radiologist 95" = mean(phatpred_logitBrca5))
 
-kable(MeanProbRadiologist2, col.names = c("Average Probability"), caption = "**Average Probability per Radiologist**",  format_caption = c("italic", "underline")) %>%
-  kable_styling(bootstrap_options = "striped", full_width = F) %>%
-  footnote(symbol = "Table2.2") 
+kable(MeanProbRadiologist2, col.names = c("Average Probability"), caption = "**Table 2.4 Average Probability per Radiologist**",  format_caption = c("italic", "underline")) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F) #%>%
+  #footnote(symbol = "Table2.2") 
 ```
 
-As revealed from Table 2.2, radiologist 89 can be regarded as the most clinically conservative out of all radiologists, very closely followed by 66, since both their average predicted probabilities are the highest. On the other hand, radiologist 34 is the least conservative with the lowest average phat recorded by both models, giving risk factors constant. Therefore, if we compare radiologist 89 to radiologist 34, we can state that radiologist 89 has a lower threshold for wanting to double-check the patient’s results compared to radiologist 34. These results confirm the conclusion from our first approach where we compared coefficients.  
+As revealed from Table 2.4, radiologist 89 can be regarded as the most clinically conservative out of all radiologists, very closely followed by 66, since both their average predicted probabilities are the highest. On the other hand, radiologist 34 is the least conservative with the lowest average phat recorded by both models, giving risk factors constant. Therefore, if we compare radiologist 89 to radiologist 34, we can state that radiologist 89 has a lower threshold for wanting to double-check the patient’s results compared to radiologist 34. These results confirm the conclusion from our first approach where we compared coefficients.  
 
 To confirm the results above, we also computed false negatives and false positives for each radiologist. To construct the confusion matrix for each radiologist, we used the entire data set.
 
@@ -678,7 +675,7 @@ We compared the following logit models that regress cancer on risk factors. Mode
 
 We simulated 100 regressions for each model, calculated the deviances for each model and then took average of these deviances to come up with an average deviance per model. The reason why we have included models 7 and 8 is because on average density, symptoms and menopause have the lowest average deviances compared to all other models except the baseline model, model 1. Hence, we wanted to observe if the average deviances of models 7 and 8 will be lower than that of the baseline model. 
 
-Table 2.3 reveals the average deviance of each of the 10 models.
+Table 2.5 reveals the average deviance of each of the 10 models.
 
 ```{r setup 2.1.6, warning=FALSE, echo=FALSE}
 brca <- read.csv("https://raw.githubusercontent.com/jgscott/ECO395M/master/data/brca.csv")
@@ -748,16 +745,16 @@ MeanDev = data.table::data.table("devBaseline"=mean(CancerResponse3$devBaseline)
 
 DevMeans_transpose <- t(MeanDev)
 
-kable(DevMeans_transpose[1:8,], col.names = c("Average Deviance"), caption = "**Average Deviance per Model**",  format_caption = c("italic", "underline")) %>%
-  kable_styling(bootstrap_options = "striped", full_width = F) %>%
-  footnote(symbol = "Table2.3") 
+kable(DevMeans_transpose[1:8,], col.names = c("Average Deviance"), caption = "**Table 2.5 Average Deviance per Model**",  format_caption = c("italic", "underline")) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F) #%>%
+  #footnote(symbol = "Table2.3") 
 ```
 
-We consider the first model, where we are regressing cancer only on recall, as the baseline model. If the radiologists have been weighing risk factors flawlessly, the baseline model would have the lowest deviance, as they take into account all the risk factors when making decisions to recall the patients. By comparing the baseline model with all the models that have only one more variable added to the recall variable (models 2, 3, 4, 5, 6), we find that the lowest average deviance has model 1, the baseline model, as shown in Table 2.3. This result indicates that radiologists are considering strongly enough all the risk factors when making a recall decision. 
+We consider the first model, where we are regressing cancer only on recall, as the baseline model. If the radiologists have been weighing risk factors flawlessly, the baseline model would have the lowest deviance, as they take into account all the risk factors when making decisions to recall the patients. By comparing the baseline model with all the models that have only one more variable added to the recall variable (models 2, 3, 4, 5, 6), we find that the lowest average deviance has model 1, the baseline model, as shown in Table 2.5. This result indicates that radiologists are considering strongly enough all the risk factors when making a recall decision. 
 
 Lastly, we compare the coefficients of models 2, 3, 4, 5, 6 to see if they are high enough. If a coefficient has a significant effect on the odds of having a cancer, then the radiologist may not be considering that risk factor as strongly in making his or her recall decision. 
 
-The following table shows the coefficients of each of the models that consist of one variable. 
+The following table shows the coefficients of each of the models that consist of one other variable except for recall. 
 
 ```{r setup 2.1.7, warning=FALSE, echo=FALSE}
 brca <- read.csv("https://raw.githubusercontent.com/jgscott/ECO395M/master/data/brca.csv")
@@ -770,38 +767,38 @@ logit_cancer6 = glm(cancer ~ recall + age,  data=brca, family ='binomial')
 
 tab_model(logit_cancer1, logit_cancer2, logit_cancer3, logit_cancer4, logit_cancer5, logit_cancer6, 
           transform = NULL, dv.labels = c("Model 1", "Model 2", "Model 3", "Model 4", "Model 5", "Model 6"), 
-          show.ci=FALSE, show.p = FALSE, show.r2 = FALSE, show.obs = FALSE, string.est = "Coefficients")
+          show.ci=FALSE, show.p = FALSE, show.r2 = FALSE, show.obs = FALSE, string.est = "Coefficients", title = "**Table 2.6 Coefficients of Models** ")
 ```
 
 As we can expect from the table above, the highest coefficients are for density, age and menopause. Looking at model 3, if the patient has a risk factor of density4, the odds of having a cancer get multiplied by exp(1.62) ~ 5.05 which is a significant amount. Hence, we can conclude that radiologists may not be weighting as much importance to density4 as they should when interpreting the mammogram and deciding whether to recall the patient. Considering models 6 and 2, if the patients is older than 70, then the odds of having a cancer multiply by exp(0.92) ~ 2.51, while if the patient has been observed to have a postmenounknown menopause risk factor, then the odds of having a cancer get multiplied by exp(0.77) ~ 2.51. All 3 of these coefficients significantly influence the odds of having a cancer, especially the density4 coefficient. Therefore, radiologists should be suggested to weigh density, age, and menopause more heavily than they currently. 
 
-Regressing cancer on these 3 variables: density, age and menopause together, increases the coefficients for density and age even more as revealed in the table below. The table displays the coefficients of the logistic model 7. 
+Regressing cancer on these 3 variables: density, age and menopause together, increases the coefficients for density and age even more as revealed in the table below. The table 2.7 displays the coefficients of the logistic model 7. 
 
 **Model 7:** Cancer<sub>&beta;</sub>(x) = &beta;<sub>1</sub> recall + &beta;<sub>2</sub> density + &beta;<sub>2</sub> age + &beta;<sub>2</sub> menopause
-
-The two approaches lead us to two contradictory conclusions. First, the comparison of each model's average deviance measure revealed that the baseline model (cancer regressed only on recall) has the lowest deviance on average; hence, radiologists are already weighing sufficient importance on all risk factors. However, the comparison of each risk factor's coefficient showed us that radiologist should actually weigh density, age and menopause stronger than currently are in making recall decisions. 
-
-Since the deviance measure can be considered more unstable than examining the coefficients, we will lean on the results from approach 2 and conclude that radiologists should be placing more importance on density, age and menopause when making a recall decision. 
-
 
 ```{r setup 2.1.8, warning=FALSE, echo=FALSE}
 brca <- read.csv("https://raw.githubusercontent.com/jgscott/ECO395M/master/data/brca.csv")
 logit_cancer7 = glm(cancer ~ recall + density + age + menopause, data=brca, family ='binomial')
 
 tab_model(logit_cancer7, transform = NULL, dv.labels = c("Model 7"), 
-          show.ci=FALSE, show.p = FALSE, show.r2 = FALSE, show.obs = FALSE, string.est = "Coefficients")
+          show.ci=FALSE, show.p = FALSE, show.r2 = FALSE, show.obs = FALSE, string.est = "Coefficients", title="**Table 2.7 Coefficients of Model 7**")
 ```
 
+The two approaches lead us to two a little contradictory conclusions. First, the comparison of each model's average deviance measure revealed that the baseline model (cancer regressed only on recall) has the lowest deviance on average; hence, radiologists are already weighing sufficient importance on all risk factors. However, the comparison of each risk factor's coefficient showed us that radiologist should actually weigh density, age and menopause stronger than currently are in making recall decisions. 
 
-# Q3 
+Since the deviance measure can be considered more unstable than examining the coefficients, we will lean on the results from approach 2 and conclude that radiologists should be placing more importance on density, age and menopause when making a recall decision. 
+
+
+
+# Problem 3: Predicting when articles go viral
 In this exercise we are interested in building a model to predict whether articles published by Mashable will be viral or not based on the cutoff of 1400 shares. In addition, the article-level features are explored in order to know how to improve an article’s chance of being viral.
 
-### Model specification
+### Approach specification
 
-In building a predictive model for Mashable’s articles two different approaches as regression and classification have been used. 
+In building a predictive model for Mashable’s articles, two different approaches have been used.The first approach does linear regression first and then chooses a threshold based on the prediction of the linear model to get the predicted binary dependent variable. The second approach chooses a threshold first to get a binary dependent variable and then uses classification models (logistic model and KNN) to regress that binary variable on feature variables.
 
-#### Linear regression
-First, we fit various linear regression models to predict the number of shares of Mashable’s articles that included all the article features as predictors except those that were perfectly collinear with each other. At the next stage the predicted shares were thresholded at 1400 shares to evaluate the performance of the model on a test set. The model which always predicts “not viral” was chosen as a baseline model and out-of-sample performances of our predictive models were evaluated compared to the out-of-sample performance of the baseline model. 
+## Question 1: What the Performance of First Doing Linear Regression And Then Choosing Threshold 
+First, we fit various linear regression models to predict the number of shares of Mashable’s articles that included all the article features as predictors except those that were likely to be perfectly collinear with each other. At the next stage the predicted shares were thresholded at 1400 shares to evaluate the performance of the model on a test set. Since there are more than 50 percent articles in the raw data were not viral, the model which always predicted “not viral” was chosen as a baseline model and then out-of-sample performances of our predictive models were evaluated compared to the out-of-sample performance of the baseline model. 
 
 
 ```{r model2.3.1-lm, echo = FALSE, warning=FALSE}
@@ -845,12 +842,12 @@ LM_News_all_int = lm(log_shares ~ n_tokens_title + n_tokens_content + num_other_
  FPR_All_int = confusion_out_lmAll_int[1,2]/sum(confusion_out_lmAll_int[1, ]))
 }
 
-NewserrortableLM=data.frame("Error rate of Linear Model" = mean(LinearViral$ErrorRate_All_int),
-                          "Error rate of Null Model" = mean(LinearViral$Error_rate_Null),
+NewserrortableLM=data.frame("Error rate of Linear Model" = round(mean(LinearViral$ErrorRate_All_int), 4),
+                          "Error rate of Null Model" = round(mean(LinearViral$Error_rate_Null),4),
                           
-                          "TPR of Linear Model" = mean(LinearViral$TPR_All_int),
+                          "TPR of Linear Model" = round(mean(LinearViral$TPR_All_int),4),
                         
-                          "FPR of Linear Model" = mean(LinearViral$FPR_All_int))
+                          "FPR of Linear Model" = round(mean(LinearViral$FPR_All_int),4))
                 
 ```
 
@@ -863,7 +860,8 @@ online_news$log_shares = log(online_news$shares)
 online_news$num_other_hrefs = online_news$num_hrefs - online_news$num_self_hrefs
 library(data.table)
 rates_transpose <- t(NewserrortableLM)
-kable(rates_transpose, rates_transpose = c("Error rate of Linear Model", "Error Rate of Null Model","True Positive Rate of Linear Model", "False Positive Rate of Linear Model"), caption = "Table 3.1. Linear model performance evaluation measures") 
+kable(rates_transpose, rates_transpose = c("Error rate of Linear Model", "Error Rate of Null Model","True Positive Rate of Linear Model", "False Positive Rate of Linear Model"), 
+caption = "**Table 3.1 The Performance of The Linear Model") 
 ```
 
 ```{r table2.3.2_Conf.Matrix, echo = FALSE, warning=FALSE}
@@ -875,14 +873,75 @@ t = xtabs(~Online_news_Test$viral+yhat_testAll_int)
 df = as.data.frame(t)
 t = data.frame(yhat0 = c(df$Freq[1],df$Freq[2]),yhat1 = c(df$Freq[3],df$Freq[4]))
 row.names(t) <- c("True viral status No", "True viral status Yes")
-kable(t, padding = 2, align = "c", col.names = c("Predicted viral status No", "Predicted viral status Yes"), caption = "Table 3.2. Confusion matrix for the linear model")
+kable(t, padding = 2, align = "c", col.names = c("Predicted viral status No", "Predicted viral status Yes"), caption = "**Table 3.2. Confusion Matrix For The Linear Model**")
   
 ```
 
-Overall error rate of the linear model is 40.5% with an absolute improvement of 9% over the null model’s error rate. On average, its true positive rate is about 85% and its false positive rate is about 65%.
+Overall error rate of the linear model is 44% with an absolute improvement of 5% over the null model’s error rate. On average, its true positive rate is about 91% and its false positive rate is about 78%.
+
+In addition to the linear regression model,  KNN regression model was also performed to predict the viral status of articles using the same approach of regressing first and thresholding next. From the table 3.3 it can be seen that KNN model had very similar results to the linear regression model.   
+```{r model2.3.1-knn, echo = FALSE, warning=FALSE}
+online_news <- read.csv("https://raw.githubusercontent.com/jgscott/ECO395M/master/data/online_news.csv")
+online_news$viral = ifelse(online_news$shares > 1400, 1, 0)
+online_news$log_shares = log(online_news$shares)
+online_news$num_other_hrefs = online_news$num_hrefs - online_news$num_self_hrefs
+
+#use KNN method to do prediction
+knn_result=data.frame(k=c(), ErrorRate=c(), TPR=c(), FPR=c())
+k_grid = seq(3, 99, by=2)
+LoopKNN = foreach(k=k_grid, .combine='c') %do% {
+  out = do(1)*{
+    n = nrow(online_news)
+    ntrain = n*0.8
+    ntest = n - n*0.8
+    TrainSet = sample.int(n, ntrain, replace = FALSE)
+    TestSet = setdiff(1:n, TrainSet)
+    news_train = online_news[TrainSet,]
+    news_test = online_news[TestSet,]
+    
+    Xtrain = model.matrix(~.- (url+ shares + log_shares + viral) - 1,data=news_train)
+    Xtest = model.matrix(~.- (url+ shares + log_shares + viral) - 1,data=news_test)
+    Ytrain = news_train$shares
+    Ytest = news_test$shares
+    
+    scales = apply(Xtrain, 2, sd)
+    Xtrain_scaled = scale(Xtrain, scale=scales)
+    Xtest_scaled = scale(Xtest, scale=scales)
+    
+    knnPred = knn.reg(Xtrain_scaled, Xtest_scaled, Ytrain, k=k)
+    yhat_knnPred=ifelse(knnPred$pred>1400, 1, 0)
+    confusion_out_knn=table(y=news_test$viral, yhat=yhat_knnPred)
+    
+    c(ErrorRate_knn=1-sum(diag(confusion_out_knn)/sum(confusion_out_knn)),
+      TPR_knn= confusion_out_knn[2,2]/sum(confusion_out_knn[2, ]),
+      FPR_knn= confusion_out_knn[1,2]/sum(confusion_out_knn[1, ]))
+    
+  }
+  knn_result=rbind(knn_result,c(k, mean(out$ErrorRate_knn), mean(out$TPR_knn), mean(out$FPR_knn)))
+}
+colnames(knn_result)=c("K", "Mean_ErrorRate", "Mean_TPR", "Mean_FPR")
+
+Min_ErrorRate1= data.table::data.table("Min ErrorRate"=round(min(knn_result$`Mean_ErrorRate`),4), 
+                                    "K"=knn_result$`K`[knn_result$`Mean_ErrorRate`==min(knn_result$`Mean_ErrorRate`)])
+Max_TPR1= data.table::data.table("Max True Positive Rate"=round(max(knn_result$`Mean_TPR`),4), 
+                                      "K"=knn_result$`K`[knn_result$`Mean_TPR`==max(knn_result$`Mean_TPR`)])
+Min_FPR1= data.table::data.table("Min False Positive Rate"=round(min(knn_result$`Mean_FPR`),4), 
+                                      "K"=knn_result$`K`[knn_result$`Mean_FPR`==min(knn_result$`Mean_FPR`)])
+
+TableKNN1 = data.table::data.table("Model Performance Measures" = c("Min ErrorRate", "Max True Positive Rate",
+                                                        "Min False Positive Rate"), "Rate" = c(min(knn_result$`Mean_ErrorRate`),
+                                                                                                   max(knn_result$`Mean_TPR`), 
+                                                                                                   min(knn_result$`Mean_FPR`)),
+                                                          "K" = c(knn_result$`K`[knn_result$`Mean_ErrorRate`==min(knn_result$`Mean_ErrorRate`)],
+                                                                  knn_result$`K`[knn_result$`Mean_TPR`==max(knn_result$`Mean_TPR`)],
+                                                                  knn_result$`K`[knn_result$`Mean_FPR`==min(knn_result$`Mean_FPR`)]))
+
+kable(TableKNN1, caption = "**Table 3.3 Performance of The KNN Model**")
+
+```
 
 
-#### Classification
+## Question2: What If Threshold First And Then Do Regression
 
 Second approach of building predictive model comes from the standpoint of classification. A new binomial variable for article being viral is defined. We fit a logistic regression that included all the article features as predictors to directly predict the viral status as a target variable. The model which always predicts “not viral” was chosen as a baseline model and out-of-sample performances of our classification model was evaluated compared to the out-of-sample performance of the baseline model. 
 
@@ -924,10 +983,10 @@ LogitViral = do(100)* {
     FPR_All_int = confusion_out_logitAll_int[1,2]/sum(confusion_out_logitAll_int[1, ]))
 }
 
-NewsErrorTRP_FRPtableLogit=data.frame("Error Rate of Logit Model" = mean(LogitViral$ErrorRate_All_int),
-                                      "Error Rate of Null Model" = mean(LogitViral$Error_rate_Null),
-                           "TPR of Logit Model" = mean(LogitViral$TPR_All_int),
-                           "FPR of Logit Model" = mean(LogitViral$FPR_All_int))
+NewsErrorTRP_FRPtableLogit=data.frame("Error Rate of Logit Model" = round(mean(LogitViral$ErrorRate_All_int),4),
+                                      "Error Rate of Null Model" = round(mean(LogitViral$Error_rate_Null),4),
+                           "TPR of Logit Model" = round(mean(LogitViral$TPR_All_int),4),
+                           "FPR of Logit Model" = round(mean(LogitViral$FPR_All_int),4))
 ```
 
 Similar to the approach with linear regression model, the full model that included all the article features as predictors, except those that were perfectly collinear with each other was chosen among other logit models with a smaller number of explanatory variables based on the comparison of error rates. Its averaged overall error rate, true positive rate and false positive rate across 100 train/test splits together with confusion matrix for one of the iterations are shown below. 
@@ -938,7 +997,7 @@ online_news$viral = ifelse(online_news$shares > 1400, 1, 0)
 online_news$log_shares = log(online_news$shares)
 online_news$num_other_hrefs = online_news$num_hrefs - online_news$num_self_hrefs
 rates_transpose_glm <- t(NewsErrorTRP_FRPtableLogit)
-kable(rates_transpose_glm, rates_transpose_glm = c("Error rate of Logistic Model", "Error Rate of Null Model","True Positive Rate of Logistic Model", "False Positive Rate of Logistic Model"), caption = "Table 3.3. Logistic model performance evaluation measures") 
+kable(rates_transpose_glm, rates_transpose_glm = c("Error rate of Logistic Model", "Error Rate of Null Model","True Positive Rate of Logistic Model", "False Positive Rate of Logistic Model"), caption = "**Table 3.4 The Performance of Logistic Model**") 
 ```
 
 ```{r table2.3.4_Conf.matrix, echo = FALSE, warning=FALSE}
@@ -950,11 +1009,74 @@ t = xtabs(~Online_news_Test$viral+yhatTest_logit_NewsAll_int)
 df = as.data.frame(t)
 t = data.frame(yhat0 = c(df$Freq[1],df$Freq[2]),yhat1 = c(df$Freq[3],df$Freq[4]))
 row.names(t) <- c("True viral status No", "True viral status Yes")
-kable(t, padding = 2, align = "c", col.names = c("Predicted viral status No", "Predicted viral status Yes"), caption = "Table 3.4. Confusion matrix for the logistic model")
+kable(t, padding = 2, align = "c", col.names = c("Predicted viral status No", "Predicted viral status Yes"), caption = "**Table 3.5 Confusion Matrix For The Logistic Model**")
   
 ```
 
-Overall error rate of the logistic model is 37% with an absolute improvement of 12% over the null model’s error rate. On average, its true positive rate is about 59% and its false positive rate is about 13%.
+Overall error rate of the logistic model is 39% with an absolute improvement of 10% over the null model’s error rate. On average, its true positive rate is about 57% and its false positive rate is about 37%.
+
+KNN regression model for classification that directly predicts the viral status as a target variable yields very similar results to the logistic regression model. 
+
+```{r model2.3.2-knn, echo = FALSE, warning=FALSE}
+online_news <- read.csv("https://raw.githubusercontent.com/jgscott/ECO395M/master/data/online_news.csv")
+online_news$viral = ifelse(online_news$shares > 1400, 1, 0)
+online_news$log_shares = log(online_news$shares)
+online_news$num_other_hrefs = online_news$num_hrefs - online_news$num_self_hrefs
+
+knn_result2=data.frame(k=c(), ErrorRate=c(), TPR=c(), FPR=c())
+k_grid = seq(3, 99, by=2)
+LoopKNN = foreach(k=k_grid, .combine='c') %do% {
+  out = do(1)*{
+    n = nrow(online_news)
+    ntrain = n*0.8
+    ntest = n - n*0.8
+    TrainSet = sample.int(n, ntrain, replace = FALSE)
+    TestSet = setdiff(1:n, TrainSet)
+    news_train = online_news[TrainSet,]
+    news_test = online_news[TestSet,]
+    
+    Xtrain = model.matrix(~.- (url+ shares + log_shares + viral) - 1,data=news_train)
+    Xtest = model.matrix(~.- (url+ shares + log_shares + viral) - 1,data=news_test)
+    Ytrain = news_train$viral
+    Ytest = news_test$viral
+    
+    scales = apply(Xtrain, 2, sd)
+    Xtrain_scaled = scale(Xtrain, scale=scales)
+    Xtest_scaled = scale(Xtest, scale=scales)
+    
+    knnPred_class = class:: knn(Xtrain_scaled, Xtest_scaled, Ytrain, k=25)
+    confusion_out_knnClass=table(y=news_test$viral, yhat=knnPred_class)
+    
+    c(ErrorRate_knnClass=1-sum(diag(confusion_out_knnClass)/sum(confusion_out_knnClass)),
+      TPR_knnClass= confusion_out_knnClass[2,2]/sum(confusion_out_knnClass[2, ]),
+      FPR_knnClass= confusion_out_knnClass[1,2]/sum(confusion_out_knnClass[1, ]))
+    
+  }
+  knn_result2=rbind(knn_result2,c(k, mean(out$ErrorRate_knnClass), mean(out$TPR_knnClass), mean(out$FPR_knnClass)))
+}
+colnames(knn_result2)=c("K", "Mean_ErrorRate", "Mean_TPR", "Mean_FPR")
+
+Min_ErrorRate= data.table::data.table("Min ErrorRate"=round(min(knn_result2$`Mean_ErrorRate`),4),
+                                      "K"=knn_result2$`K`[knn_result2$`Mean_ErrorRate`==min(knn_result2$`Mean_ErrorRate`)])
+Max_TPR= data.table::data.table("Max True Positive Rate"=round(max(knn_result2$`Mean_TPR`),4), 
+                                "K"=knn_result2$`K`[knn_result2$`Mean_TPR`==max(knn_result2$`Mean_TPR`)])
+Min_FPR= data.table::data.table("Min False Positive Rate"=round(min(knn_result2$`Mean_FPR`),4), 
+                                "K"=knn_result2$`K`[knn_result2$`Mean_FPR`==min(knn_result2$`Mean_FPR`)])
+c=rbind(Min_ErrorRate)
+
+TableKNN2 = data.table::data.table("Model Performance Measures" = c("Min ErrorRate", "Max True Positive Rate",
+                                                        "Min False Positive Rate"), "Rate" = c(min(knn_result2$`Mean_ErrorRate`),
+                                                                                                   max(knn_result2$`Mean_TPR`), 
+                                                                                                   min(knn_result2$`Mean_FPR`)),
+                                                          "K" = c(knn_result2$`K`[knn_result$`Mean_ErrorRate`==min(knn_result$`Mean_ErrorRate`)],
+                                                                  knn_result2$`K`[knn_result$`Mean_TPR`==max(knn_result$`Mean_TPR`)],
+                                                                  knn_result2$`K`[knn_result$`Mean_FPR`==min(knn_result$`Mean_FPR`)]))
+
+kable(TableKNN2, caption = "**Table 3.6 Performance of KNN Model**")
+
+
+```
+
 
 ### Conclusion
 
@@ -963,41 +1085,28 @@ online_news <- read.csv("https://raw.githubusercontent.com/jgscott/ECO395M/maste
 online_news$viral = ifelse(online_news$shares > 1400, 1, 0)
 online_news$log_shares = log(online_news$shares)
 online_news$num_other_hrefs = online_news$num_hrefs - online_news$num_self_hrefs
-NewsErrorTRP_FRPtableLinearLogit=data.frame("Error rate of Linear model" = mean(LinearViral$ErrorRate_All_int),
-                          "Error rate of Null model" = mean(LinearViral$Error_rate_Null),
-                          "TPR of Linear model" = mean(LinearViral$TPR_All_int),
-                          "FPR of Linear model" = mean(LinearViral$FPR_All_int),
-                          "Error rate of Logit model" = mean(LogitViral$ErrorRate_All_int),
-                           "Error rate of Null model" = mean(LogitViral$Error_rate_Null),
-                           "TPR of Logit model" = mean(LogitViral$TPR_All_int),
-                           "FPR of Logit model" = mean(LogitViral$FPR_All_int))
-rates_transpose_lm_glm <- t(NewsErrorTRP_FRPtableLinearLogit)
-kable(rates_transpose_lm_glm, rates_transpose_lm_glm = c("Error rate of Linear Model", "Error Rate of Null Model","True Positive Rate of Linear Model", "False Positive Rate of Linear Model", "Error rate of Logistic Model", "Error Rate of Null Model","True Positive Rate of Logistic Model", "False Positive Rate of Logistic Model"),
-caption = "Table 3.5. Linear and logistic model performance evaluation measures")
+
+NewsErrorTRP_FRPtableLogit1 = data.table::data.table("Performance Measures" = c("Error rate of Model", "Error rate of Null model", "TPR", "FPR"),
+"Logit Model: Average Performance Measures" = c(round(mean(LogitViral$ErrorRate_All_int),4),
+                                                                                  round(mean(LogitViral$Error_rate_Null),4),
+                                                                                        round(mean(LogitViral$TPR_All_int),4),
+                                                                                        round(mean(LogitViral$FPR_All_int),4)))
+                                                                                        
+NewsErrorTRP_FRPtableLinear2 = data.table::data.table("Performance Measures" = c("Error rate of Model",
+                                                                                 "Error rate of Null model",
+                                                                                 "TPR",
+                                                                                 "FPR"),
+                                                      "Linear Model: Average Performance Measures" = c(round(mean(LinearViral$ErrorRate_All_int),4),
+round(mean(LinearViral$Error_rate_Null),4),
+                                                                                         round(mean(LinearViral$TPR_All_int),4),
+                                                                                          round(mean(LinearViral$FPR_All_int),4)))
+MergedTable = inner_join(NewsErrorTRP_FRPtableLogit1, NewsErrorTRP_FRPtableLinear2, by="Performance Measures")
+
+kable(MergedTable, MergedTable = c("Error rate of Linear Model", "Error Rate of Null Model","True Positive Rate of Linear Model", "False Positive Rate of Linear Model", "Error rate of Logistic Model", "Error Rate of Null Model","True Positive Rate of Logistic Model", "False Positive Rate of Logistic Model"),
+caption = "**Table 3.7 Comparison Between Two Approaches**")
 ```
 
-Table 3.5. shows the comparison of two approaches based on their performance evaluation measures. If we evaluate the two approaches based on their error rates, it can be concluded that the second approach of thresholding the shares of articles first and then using classification as a second step performs better than the first approach. It produces an absolute improvement of about 4% over the method of using the linear regression model first and then thresholding. In addition, the classification method gives lower false positive rates compared to the linear regression (relative improvement of about 50%). However, obtained improvements in the accuracy rate of the classification model comes in the expense of its relatively lower true positive rates. As linear regression model predicts continuous variables, not discrete outcomes, they potentially have more room for errors that comes from choosing the threshold measure for the followed discretization. Categorization assumes that the relationship between the predictor and the response is flat within intervals and the threshold is very likely to be estimated with sampling error. 
+Table 3.7 shows the comparison of two approaches based on their performance evaluation measures. If we evaluate the two approaches based on their error rates, it can be concluded that the second approach of thresholding the shares of articles first and then using classification as a second step performs better than the first approach. It produces an absolute improvement of about 6% over the method of using the linear regression model first and then thresholding. In addition, the classification method gives lower false positive rates compared to the linear regression (relative improvement of about 45%). However, obtained improvements in the accuracy rate of the classification model comes in the expense of its relatively lower true positive rates. As linear regression model predicts continuous variables, not discrete outcomes, they potentially have more room for errors that comes from choosing the threshold measure for the followed discretization. Categorization assumes that the relationship between the predictor and the response is flat within intervals and the threshold is very likely to be estimated with sampling error. 
 
 Logistic regression performs better on classification problems due to the fact that they are constructed to predict conditional probabilities where the binary outcomes are in the discrete form. Unlike linear regression, logistic regression can directly predict probabilities (values that are restricted to the (0,1) interval), furthermore, those probabilities are well-calibrated when compared to the linear regression.
 
-```{r table2.3.6_recommendations, echo = FALSE, warning=FALSE, results='asis'}
-online_news <- read.csv("https://raw.githubusercontent.com/jgscott/ECO395M/master/data/online_news.csv")
-online_news$viral = ifelse(online_news$shares > 1400, 1, 0)
-online_news$log_shares = log(online_news$shares)
-online_news$num_other_hrefs = online_news$num_hrefs - online_news$num_self_hrefs
-Logit_News_all_int = glm(viral ~ n_tokens_title + n_tokens_content + num_other_hrefs + num_self_hrefs + num_imgs 
-                                    + num_videos + average_token_length + num_keywords  + data_channel_is_lifestyle 
-                                    + data_channel_is_entertainment + data_channel_is_bus + data_channel_is_socmed 
-                                    + data_channel_is_tech +  self_reference_avg_sharess + weekday_is_monday 
-                                    + weekday_is_tuesday + weekday_is_wednesday + weekday_is_thursday + weekday_is_friday +
-                                      + weekday_is_saturday + global_rate_positive_words 
-                                    + global_rate_negative_words + avg_positive_polarity  + avg_negative_polarity + title_subjectivity + title_sentiment_polarity, data=Online_news_Train, family ='binomial')
-
-tab_model(Logit_News_all_int, transform = NULL, show.ci=FALSE, show.r2 = FALSE, show.obs = FALSE, string.est = "Coefficients")
-
-```
-
-Table 2.3.6. of the coefficients and their signinficance levels of the logistic regression model can be used to know how to improve the Mashable articles chance of getting viral.  
-Based on the logit model, it can be recommended to Mashable writers to increase rate of positive words in the content, focus more on data channels "Social Media" and "Tech" and avoid publishing on weekdays.
-
-```
