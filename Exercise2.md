@@ -2,9 +2,9 @@ Exercise 2
 ================
 By Eliza Malinova, Zhenghao Li, and Raushan Baizakova
 
-# 1\. Saratoga house prices
+# Problem 1. Saratoga house prices
 
-## 1.1 Select a Good Model for Predicting Prices
+## Question 1: Select a Good Linear Model to Predict Housing Prices
 
 In this exercise, the purpose is to choose a model good at predicting
 housing prices based on the dataset Saratoga. The dataset has 1728
@@ -189,7 +189,7 @@ Baseline Model 1
 
 <td style="text-align:right;">
 
-66426.91
+66438.51
 
 </td>
 
@@ -205,7 +205,7 @@ Price Model 1
 
 <td style="text-align:right;">
 
-63724.62
+64049.23
 
 </td>
 
@@ -221,7 +221,7 @@ Price Model 2
 
 <td style="text-align:right;">
 
-58952.32
+58506.53
 
 </td>
 
@@ -237,7 +237,7 @@ Price Model 2.1
 
 <td style="text-align:right;">
 
-65153.66
+64819.52
 
 </td>
 
@@ -376,7 +376,7 @@ Baseline Model 2
 
 <td style="text-align:right;">
 
-60714.85
+60463.82
 
 </td>
 
@@ -392,7 +392,7 @@ House Value Model 1
 
 <td style="text-align:right;">
 
-58817.31
+58589.12
 
 </td>
 
@@ -408,7 +408,7 @@ House Value Model 2
 
 <td style="text-align:right;">
 
-58695.63
+58448.87
 
 </td>
 
@@ -435,7 +435,7 @@ Note that since for HouseValue models predict house values, we need to
 add those corresponding land values to predicted house values when
 predicting prices
 
-## 1.2 Those Extremely Strong Price Drivers
+## Question 2: Which Variables or Interactions Drive Prices More?
 
 Now we decide to prefer a more parsimonious model hence choose House
 Value Model 1. To see which variables and interactions are extremely
@@ -446,7 +446,7 @@ the Table 1.5.
 
 <caption style="font-weight: bold; text-align:left;">
 
-Table 1.5 Coefficients of House Value Model 1
+**Table 1.5 Coefficients of House Value Model 1**
 
 </caption>
 
@@ -498,25 +498,53 @@ p
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
 
-landValue
+(Intercept)
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.19
+126249.63
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.29 – -0.08
+72379.21 – 180120.04
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
 <strong>\<0.001
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+landValue
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+\-0.10
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+\-0.20 – 0.01
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.067
 
 </td>
 
@@ -532,19 +560,19 @@ rooms
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-3563.03
+\-6188.99
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-8260.48 – 1134.42
+\-10719.44 – -1658.55
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.137
+<strong>0.007</strong>
 
 </td>
 
@@ -560,19 +588,19 @@ bathrooms
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-18929.88
+9490.73
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-2632.58 – 40492.34
+\-12564.00 – 31545.47
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.085
+0.399
 
 </td>
 
@@ -588,19 +616,19 @@ lotSize
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-30604.13
+12930.78
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-15633.95 – 45574.31
+\-184.91 – 26046.47
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>\<0.001
+0.053
 
 </td>
 
@@ -616,13 +644,13 @@ newConstruction \[No\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-54850.30
+55263.32
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-38832.70 – 70867.90
+39345.06 – 71181.58
 
 </td>
 
@@ -644,13 +672,13 @@ livingArea
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-59.32
+62.02
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-33.23 – 85.41
+35.29 – 88.74
 
 </td>
 
@@ -672,19 +700,19 @@ pctCollege
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-109.55
+\-166.58
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-436.75 – 217.64
+\-493.41 – 160.26
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.511
+0.318
 
 </td>
 
@@ -700,125 +728,13 @@ heating \[hot water/steam\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-48517.46
+42339.09
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-21006.92 – 76028.00
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>0.001</strong>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-heating \[electric\]
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-60387.62
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-50297.06 – 171072.31
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.285
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-fuel \[electric\]
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-43047.19
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-152730.92 – 66636.55
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.441
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-fuel \[oil\]
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-25784.00
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-3170.21 – 54738.20
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.081
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-centralAir \[No\]
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-11649.39
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-19055.57 – -4243.22
+15767.46 – 68910.72
 
 </td>
 
@@ -834,19 +750,131 @@ centralAir \[No\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
 
+heating \[electric\]
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+57205.63
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+\-41348.69 – 155759.95
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.255
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+fuel \[electric\]
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+\-41393.68
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+\-139421.48 – 56634.12
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+0.408
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+fuel \[oil\]
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+35890.60
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+7533.17 – 64248.02
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.013</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
+centralAir \[No\]
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+\-9720.82
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+\-17134.64 – -2307.00
+
+</td>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+
+<strong>0.010</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+
 waterfront \[No\]
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-126907.93
+\-126693.12
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-159501.44 – -94314.42
+\-160055.11 – -93331.14
 
 </td>
 
@@ -868,19 +896,19 @@ rooms \* bathrooms
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-1080.04
+2352.88
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-1733.00 – 3893.08
+\-533.50 – 5239.27
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.451
+0.110
 
 </td>
 
@@ -896,19 +924,19 @@ rooms \* livingArea
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-2.44
+1.91
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.49 – 5.37
+\-1.05 – 4.88
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.103
+0.206
 
 </td>
 
@@ -924,19 +952,19 @@ lotSize \* livingArea
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-9.62
+\-2.12
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-16.65 – -2.60
+\-8.68 – 4.44
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.007</strong>
+0.527
 
 </td>
 
@@ -952,13 +980,13 @@ livingArea \* heating \[hot<br>water/steam\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-34.89
+\-30.76
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-49.37 – -20.42
+\-44.39 – -17.13
 
 </td>
 
@@ -980,19 +1008,19 @@ livingArea \* heating<br>\[electric\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-37.72
+\-35.82
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-99.58 – 24.14
+\-94.11 – 22.46
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.232
+0.228
 
 </td>
 
@@ -1008,19 +1036,19 @@ livingArea \* fuel<br>\[electric\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-20.51
+21.69
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-40.45 – 81.48
+\-36.08 – 79.46
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.509
+0.462
 
 </td>
 
@@ -1036,19 +1064,19 @@ livingArea \* fuel \[oil\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-21.86
+\-29.07
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-37.90 – -5.83
+\-45.24 – -12.89
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.008</strong>
+<strong>\<0.001
 
 </td>
 
@@ -1108,7 +1136,7 @@ NewConstruction
 
 <td style="text-align:right;">
 
-764.74
+782.60
 
 </td>
 
@@ -1172,7 +1200,7 @@ waterfront
 
 <td style="text-align:right;">
 
-1174.95
+1142.26
 
 </td>
 
@@ -1204,7 +1232,7 @@ livingArea\*heating
 
 <td style="text-align:right;">
 
-347.20
+348.43
 
 </td>
 
@@ -1220,7 +1248,7 @@ livingArea\*fuel
 
 <td style="text-align:right;">
 
-215.65
+198.46
 
 </td>
 
@@ -1235,7 +1263,7 @@ strong impact on prices: waterfront, NewConstruction, livingArea \*
 heating, and livingArea \* fuel. But other variables are not strong
 drivers of prices from the a perspective of RMSE.
 
-## 1.3 The Performance of KNN Method
+## Question 3: The Performance of KNN Method
 
 Now we use KNN regression to predict prices. The approach is similar:
 first, use price as the target variable, then use house value as the
@@ -1296,7 +1324,7 @@ The Price Model
 
 <td style="text-align:right;">
 
-62213.67
+62152.42
 
 </td>
 
@@ -1318,7 +1346,7 @@ The House Value Model
 
 <td style="text-align:right;">
 
-59698.07
+60108.88
 
 </td>
 
@@ -1399,7 +1427,7 @@ accuracies and classification errors for each of the three models.
 
 <caption>
 
-**Average Model Performance Rates**
+**Table 2.1 Average Model Performance Rates**
 
 </caption>
 
@@ -1433,7 +1461,7 @@ Accuracy Out Model 1
 
 <td style="text-align:right;">
 
-0.8371
+0.8360
 
 </td>
 
@@ -1449,7 +1477,7 @@ Accuracy Out Model 2
 
 <td style="text-align:right;">
 
-0.8488
+0.8526
 
 </td>
 
@@ -1465,7 +1493,7 @@ Accuracy Out Model 3
 
 <td style="text-align:right;">
 
-0.8486
+0.8524
 
 </td>
 
@@ -1481,7 +1509,7 @@ Classification Errors Model 1
 
 <td style="text-align:right;">
 
-0.1634
+0.1645
 
 </td>
 
@@ -1497,7 +1525,7 @@ Classification Errors Model 2
 
 <td style="text-align:right;">
 
-0.1517
+0.1478
 
 </td>
 
@@ -1513,27 +1541,13 @@ Classification Errors Model 3
 
 <td style="text-align:right;">
 
-0.1519
+0.1480
 
 </td>
 
 </tr>
 
 </tbody>
-
-<tfoot>
-
-<tr>
-
-<td style="padding: 0; border: 0;" colspan="100%">
-
-<sup>\*</sup> Table2.1
-
-</td>
-
-</tr>
-
-</tfoot>
 
 </table>
 
@@ -1560,6 +1574,12 @@ regressions of both models 2 and 3. The coefficients are very similar in
 both models, hence the above conclusions apply to model 3 as well.
 
 <table style="border-collapse:collapse; border:none;">
+
+<caption style="font-weight: bold; text-align:left;">
+
+**Table 2.2 Coefficients of Model 2 and Model 3**
+
+</caption>
 
 <tr>
 
@@ -2253,7 +2273,7 @@ age \[70plus\] \* symptoms
 
 </table>
 
-Table 2.2 displays the odds ratios resulted from regressing model 2.
+Table 2.3 displays the odds ratios resulted from regressing model 2.
 Considering the fact that radiologist 13 is the base for the logit
 model, radiologist 89 and 66 both increase the odds of recall compared
 to radiologist 13, while radiologists 95 and 34 both decrease the odds
@@ -2262,10 +2282,16 @@ each radiologist, the ranking of radiologists from most clinically
 conservative to least clinically conservative is as follows: radiologist
 89, radiologist 66, radiologist 13, radiologist 95, radiologist 34.
 
-Table 2.2 confirms the above conclusions and shows odds ratios,
+Table 2.3 confirms the above conclusions and shows odds ratios,
 confidence intervals and p-values estimated from regressing model 2.
 
 <table style="border-collapse:collapse; border:none;">
+
+<caption style="font-weight: bold; text-align:left;">
+
+**Table 2.3 Odds Ratios of Model 2**
+
+</caption>
 
 <tr>
 
@@ -2277,7 +2303,7 @@ confidence intervals and p-values estimated from regressing model 2.
 
 <th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
 
-Table 2.2: Recall
+recall
 
 </th>
 
@@ -2772,14 +2798,14 @@ same patients.
 To find the average predicted probabilities, we took the mean of
 predicted probabilities for each radiologist over the patient data set.
 
-Table 2.2 shows the average predicted probability of recalling a patient
+Table 2.4 shows the average predicted probability of recalling a patient
 for each Radiologist.
 
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 
 <caption>
 
-**Average Probability per Radiologist**
+**Table 2.4 Average Probability per Radiologist**
 
 </caption>
 
@@ -2813,7 +2839,7 @@ Radiologist 13
 
 <td style="text-align:right;">
 
-0.1403432
+0.1267586
 
 </td>
 
@@ -2829,7 +2855,7 @@ Radiologist 34
 
 <td style="text-align:right;">
 
-0.0917709
+0.0928581
 
 </td>
 
@@ -2845,7 +2871,7 @@ Radiologist 66
 
 <td style="text-align:right;">
 
-0.1684051
+0.1979039
 
 </td>
 
@@ -2861,7 +2887,7 @@ Radiologist 89
 
 <td style="text-align:right;">
 
-0.2036285
+0.1920838
 
 </td>
 
@@ -2877,7 +2903,7 @@ Radiologist 95
 
 <td style="text-align:right;">
 
-0.1271962
+0.1279433
 
 </td>
 
@@ -2885,23 +2911,9 @@ Radiologist 95
 
 </tbody>
 
-<tfoot>
-
-<tr>
-
-<td style="padding: 0; border: 0;" colspan="100%">
-
-<sup>\*</sup> Table2.2
-
-</td>
-
-</tr>
-
-</tfoot>
-
 </table>
 
-As revealed from Table 2.2, radiologist 89 can be regarded as the most
+As revealed from Table 2.4, radiologist 89 can be regarded as the most
 clinically conservative out of all radiologists, very closely followed
 by 66, since both their average predicted probabilities are the highest.
 On the other hand, radiologist 34 is the least conservative with the
@@ -3419,13 +3431,13 @@ baseline model, model 1. Hence, we wanted to observe if the average
 deviances of models 7 and 8 will be lower than that of the baseline
 model.
 
-Table 2.3 reveals the average deviance of each of the 10 models.
+Table 2.5 reveals the average deviance of each of the 10 models.
 
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 
 <caption>
 
-**Average Deviance per Model**
+**Table 2.5 Average Deviance per Model**
 
 </caption>
 
@@ -3459,7 +3471,7 @@ devBaseline
 
 <td style="text-align:right;">
 
-28.45398
+27.40656
 
 </td>
 
@@ -3475,7 +3487,7 @@ Deviance: Menopause
 
 <td style="text-align:right;">
 
-29.11230
+27.99283
 
 </td>
 
@@ -3491,7 +3503,7 @@ Deviance: Density
 
 <td style="text-align:right;">
 
-32.19911
+29.33368
 
 </td>
 
@@ -3507,7 +3519,7 @@ Deviance: History
 
 <td style="text-align:right;">
 
-28.78543
+27.63905
 
 </td>
 
@@ -3523,7 +3535,7 @@ Deviance: Symptoms
 
 <td style="text-align:right;">
 
-28.70100
+27.63024
 
 </td>
 
@@ -3539,7 +3551,7 @@ Deviance: Age
 
 <td style="text-align:right;">
 
-28.61778
+27.65861
 
 </td>
 
@@ -3555,7 +3567,7 @@ Deviance: Density\&Symptoms
 
 <td style="text-align:right;">
 
-32.45235
+29.58715
 
 </td>
 
@@ -3571,27 +3583,13 @@ Deviance: Density, Symptoms & Menopause
 
 <td style="text-align:right;">
 
-32.99297
+30.11520
 
 </td>
 
 </tr>
 
 </tbody>
-
-<tfoot>
-
-<tr>
-
-<td style="padding: 0; border: 0;" colspan="100%">
-
-<sup>\*</sup> Table2.3
-
-</td>
-
-</tr>
-
-</tfoot>
 
 </table>
 
@@ -3602,7 +3600,7 @@ deviance, as they take into account all the risk factors when making
 decisions to recall the patients. By comparing the baseline model with
 all the models that have only one more variable added to the recall
 variable (models 2, 3, 4, 5, 6), we find that the lowest average
-deviance has model 1, the baseline model, as shown in Table 2.3. This
+deviance has model 1, the baseline model, as shown in Table 2.5. This
 result indicates that radiologists are considering strongly enough all
 the risk factors when making a recall decision.
 
@@ -3612,9 +3610,15 @@ odds of having a cancer, then the radiologist may not be considering
 that risk factor as strongly in making his or her recall decision.
 
 The following table shows the coefficients of each of the models that
-consist of one variable.
+consist of one other variable except for recall.
 
 <table style="border-collapse:collapse; border:none;">
+
+<caption style="font-weight: bold; text-align:left;">
+
+**Table 2.6 Coefficients of Models**
+
+</caption>
 
 <tr>
 
@@ -4215,27 +4219,19 @@ density, age, and menopause more heavily than they currently.
 
 Regressing cancer on these 3 variables: density, age and menopause
 together, increases the coefficients for density and age even more as
-revealed in the table below. The table displays the coefficients of the
-logistic model 7.
+revealed in the table below. The table 2.7 displays the coefficients of
+the logistic model 7.
 
 **Model 7:** Cancer<sub>β</sub>(x) = β<sub>1</sub> recall +
 β<sub>2</sub> density + β<sub>2</sub> age + β<sub>2</sub> menopause
 
-The two approaches lead us to two contradictory conclusions. First, the
-comparison of each model’s average deviance measure revealed that the
-baseline model (cancer regressed only on recall) has the lowest deviance
-on average; hence, radiologists are already weighing sufficient
-importance on all risk factors. However, the comparison of each risk
-factor’s coefficient showed us that radiologist should actually weigh
-density, age and menopause stronger than currently are in making recall
-decisions.
-
-Since the deviance measure can be considered more unstable than
-examining the coefficients, we will lean on the results from approach 2
-and conclude that radiologists should be placing more importance on
-density, age and menopause when making a recall decision.
-
 <table style="border-collapse:collapse; border:none;">
+
+<caption style="font-weight: bold; text-align:left;">
+
+**Table 2.7 Coefficients of Model 7**
+
+</caption>
 
 <tr>
 
@@ -4447,7 +4443,21 @@ menopause \[premeno\]
 
 </table>
 
-# Q3
+The two approaches lead us to two a little contradictory conclusions.
+First, the comparison of each model’s average deviance measure revealed
+that the baseline model (cancer regressed only on recall) has the lowest
+deviance on average; hence, radiologists are already weighing sufficient
+importance on all risk factors. However, the comparison of each risk
+factor’s coefficient showed us that radiologist should actually weigh
+density, age and menopause stronger than currently are in making recall
+decisions.
+
+Since the deviance measure can be considered more unstable than
+examining the coefficients, we will lean on the results from approach 2
+and conclude that radiologists should be placing more importance on
+density, age and menopause when making a recall decision.
+
+# Problem 3: Predicting when articles go viral
 
 In this exercise we are interested in building a model to predict
 whether articles published by Mashable will be viral or not based on the
@@ -4455,21 +4465,28 @@ cutoff of 1400 shares. In addition, the article-level features are
 explored in order to know how to improve an article’s chance of being
 viral.
 
-### Model specification
+### Approach specification
 
-In building a predictive model for Mashable’s articles two different
-approaches as regression and classification have been used.
+In building a predictive model for Mashable’s articles, two different
+approaches have been used.The first approach does linear regression
+first and then chooses a threshold based on the prediction of the linear
+model to get the predicted binary dependent variable. The second
+approach chooses a threshold first to get a binary dependent variable
+and then uses classification models (logistic model and KNN) to regress
+that binary variable on feature variables.
 
-#### Linear regression
+## Question 1: What the Performance of First Doing Linear Regression And Then Choosing Threshold
 
 First, we fit various linear regression models to predict the number of
 shares of Mashable’s articles that included all the article features as
-predictors except those that were perfectly collinear with each other.
-At the next stage the predicted shares were thresholded at 1400 shares
-to evaluate the performance of the model on a test set. The model which
-always predicts “not viral” was chosen as a baseline model and
-out-of-sample performances of our predictive models were evaluated
-compared to the out-of-sample performance of the baseline model.
+predictors except those that were likely to be perfectly collinear with
+each other. At the next stage the predicted shares were thresholded at
+1400 shares to evaluate the performance of the model on a test set.
+Since there are more than 50 percent articles in the raw data were not
+viral, the model which always predicted “not viral” was chosen as a
+baseline model and then out-of-sample performances of our predictive
+models were evaluated compared to the out-of-sample performance of the
+baseline model.
 
 The model that had all article features as predictors had the lowest
 error rate compared to the Baseline model among others. Its averaged
@@ -4481,7 +4498,7 @@ iterations are shown below.
 
 <caption>
 
-Table 3.1. Linear model performance evaluation measures
+\*\*Table 3.1 The Performance of The Linear Model
 
 </caption>
 
@@ -4497,7 +4514,7 @@ Error.rate.of.Linear.Model
 
 <td style="text-align:right;">
 
-0.4398840
+0.4405
 
 </td>
 
@@ -4513,7 +4530,7 @@ Error.rate.of.Null.Model
 
 <td style="text-align:right;">
 
-0.4942994
+0.4932
 
 </td>
 
@@ -4529,7 +4546,7 @@ TPR.of.Linear.Model
 
 <td style="text-align:right;">
 
-0.9039688
+0.9046
 
 </td>
 
@@ -4545,7 +4562,7 @@ FPR.of.Linear.Model
 
 <td style="text-align:right;">
 
-0.7759410
+0.7764
 
 </td>
 
@@ -4559,7 +4576,7 @@ FPR.of.Linear.Model
 
 <caption>
 
-Table 3.2. Confusion matrix for the linear model
+**Table 3.2. Confusion Matrix For The Linear Model**
 
 </caption>
 
@@ -4599,13 +4616,13 @@ True viral status No
 
 <td style="text-align:center;">
 
-904
+866
 
 </td>
 
 <td style="text-align:center;">
 
-3182
+3178
 
 </td>
 
@@ -4621,13 +4638,13 @@ True viral status Yes
 
 <td style="text-align:center;">
 
-356
+351
 
 </td>
 
 <td style="text-align:center;">
 
-3487
+3534
 
 </td>
 
@@ -4637,11 +4654,123 @@ True viral status Yes
 
 </table>
 
-Overall error rate of the linear model is 40.5% with an absolute
-improvement of 9% over the null model’s error rate. On average, its true
-positive rate is about 85% and its false positive rate is about 65%.
+Overall error rate of the linear model is 44% with an absolute
+improvement of 5% over the null model’s error rate. On average, its true
+positive rate is about 91% and its false positive rate is about 78%.
 
-#### Classification
+In addition to the linear regression model, KNN regression model was
+also performed to predict the viral status of articles using the same
+approach of regressing first and thresholding next. From the table 3.3
+it can be seen that KNN model had very similar results to the linear
+regression model.  
+
+<table>
+
+<caption>
+
+**Table 3.3 Performance of The KNN Model**
+
+</caption>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Model Performance Measures
+
+</th>
+
+<th style="text-align:right;">
+
+Rate
+
+</th>
+
+<th style="text-align:right;">
+
+K
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+Min ErrorRate
+
+</td>
+
+<td style="text-align:right;">
+
+0.4322109
+
+</td>
+
+<td style="text-align:right;">
+
+3
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Max True Positive Rate
+
+</td>
+
+<td style="text-align:right;">
+
+0.9925373
+
+</td>
+
+<td style="text-align:right;">
+
+85
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Min False Positive Rate
+
+</td>
+
+<td style="text-align:right;">
+
+0.6120476
+
+</td>
+
+<td style="text-align:right;">
+
+3
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+## Question2: What If Threshold First And Then Do Regression
 
 Second approach of building predictive model comes from the standpoint
 of classification. A new binomial variable for article being viral is
@@ -4665,7 +4794,7 @@ below.
 
 <caption>
 
-Table 3.3. Logistic model performance evaluation measures
+**Table 3.4 The Performance of Logistic Model**
 
 </caption>
 
@@ -4681,7 +4810,7 @@ Error.Rate.of.Logit.Model
 
 <td style="text-align:right;">
 
-0.3841834
+0.3904
 
 </td>
 
@@ -4697,7 +4826,7 @@ Error.Rate.of.Null.Model
 
 <td style="text-align:right;">
 
-0.4941027
+0.5093
 
 </td>
 
@@ -4713,7 +4842,7 @@ TPR.of.Logit.Model
 
 <td style="text-align:right;">
 
-0.5635306
+0.5857
 
 </td>
 
@@ -4729,7 +4858,7 @@ FPR.of.Logit.Model
 
 <td style="text-align:right;">
 
-0.3330721
+0.3656
 
 </td>
 
@@ -4743,7 +4872,7 @@ FPR.of.Logit.Model
 
 <caption>
 
-Table 3.4. Confusion matrix for the logistic model
+**Table 3.5 Confusion Matrix For The Logistic Model**
 
 </caption>
 
@@ -4783,13 +4912,13 @@ True viral status No
 
 <td style="text-align:center;">
 
-2668
+1762
 
 </td>
 
 <td style="text-align:center;">
 
-1312
+983
 
 </td>
 
@@ -4805,13 +4934,13 @@ True viral status Yes
 
 <td style="text-align:center;">
 
-1676
+1156
 
 </td>
 
 <td style="text-align:center;">
 
-2273
+1723
 
 </td>
 
@@ -4821,20 +4950,48 @@ True viral status Yes
 
 </table>
 
-Overall error rate of the logistic model is 37% with an absolute
-improvement of 12% over the null model’s error rate. On average, its
-true positive rate is about 59% and its false positive rate is about
-13%.
+Overall error rate of the logistic model is 39% with an absolute
+improvement of 10% over the null model’s error rate. On average, its
+true positive rate is about 57% and its false positive rate is about
+37%.
 
-### Conclusion
+KNN regression model for classification that directly predicts the viral
+status as a target variable yields very similar results to the logistic
+regression model.
 
 <table>
 
 <caption>
 
-Table 3.5. Linear and logistic model performance evaluation measures
+**Table 3.6 Performance of KNN Model**
 
 </caption>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Model Performance Measures
+
+</th>
+
+<th style="text-align:right;">
+
+Rate
+
+</th>
+
+<th style="text-align:right;">
+
+K
+
+</th>
+
+</tr>
+
+</thead>
 
 <tbody>
 
@@ -4842,13 +4999,19 @@ Table 3.5. Linear and logistic model performance evaluation measures
 
 <td style="text-align:left;">
 
-Error.rate.of.Linear.model
+Min ErrorRate
 
 </td>
 
 <td style="text-align:right;">
 
-0.4398840
+0.3717997
+
+</td>
+
+<td style="text-align:right;">
+
+3
 
 </td>
 
@@ -4858,13 +5021,19 @@ Error.rate.of.Linear.model
 
 <td style="text-align:left;">
 
-Error.rate.of.Null.model
+Max True Positive Rate
 
 </td>
 
 <td style="text-align:right;">
 
-0.4942994
+0.5855095
+
+</td>
+
+<td style="text-align:right;">
+
+85
 
 </td>
 
@@ -4874,93 +5043,19 @@ Error.rate.of.Null.model
 
 <td style="text-align:left;">
 
-TPR.of.Linear.model
+Min False Positive Rate
 
 </td>
 
 <td style="text-align:right;">
 
-0.9039688
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-FPR.of.Linear.model
+0.3093704
 
 </td>
 
 <td style="text-align:right;">
 
-0.7759410
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-Error.rate.of.Logit.model
-
-</td>
-
-<td style="text-align:right;">
-
-0.3841834
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-Error.rate.of.Null.model.1
-
-</td>
-
-<td style="text-align:right;">
-
-0.4941027
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-TPR.of.Logit.model
-
-</td>
-
-<td style="text-align:right;">
-
-0.5635306
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-FPR.of.Logit.model
-
-</td>
-
-<td style="text-align:right;">
-
-0.3330721
+3
 
 </td>
 
@@ -4970,15 +5065,145 @@ FPR.of.Logit.model
 
 </table>
 
-Table 3.5. shows the comparison of two approaches based on their
+### Conclusion
+
+<table>
+
+<caption>
+
+**Table 3.7 Comparison Between Two Approaches**
+
+</caption>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Performance Measures
+
+</th>
+
+<th style="text-align:right;">
+
+Logit Model: Average Performance Measures
+
+</th>
+
+<th style="text-align:right;">
+
+Linear Model: Average Performance Measures
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+Error rate of Model
+
+</td>
+
+<td style="text-align:right;">
+
+0.3904
+
+</td>
+
+<td style="text-align:right;">
+
+0.4405
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Error rate of Null model
+
+</td>
+
+<td style="text-align:right;">
+
+0.5093
+
+</td>
+
+<td style="text-align:right;">
+
+0.4932
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+TPR
+
+</td>
+
+<td style="text-align:right;">
+
+0.5857
+
+</td>
+
+<td style="text-align:right;">
+
+0.9046
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+FPR
+
+</td>
+
+<td style="text-align:right;">
+
+0.3656
+
+</td>
+
+<td style="text-align:right;">
+
+0.7764
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+Table 3.7 shows the comparison of two approaches based on their
 performance evaluation measures. If we evaluate the two approaches based
 on their error rates, it can be concluded that the second approach of
 thresholding the shares of articles first and then using classification
 as a second step performs better than the first approach. It produces an
-absolute improvement of about 4% over the method of using the linear
+absolute improvement of about 6% over the method of using the linear
 regression model first and then thresholding. In addition, the
 classification method gives lower false positive rates compared to the
-linear regression (relative improvement of about 50%). However, obtained
+linear regression (relative improvement of about 45%). However, obtained
 improvements in the accuracy rate of the classification model comes in
 the expense of its relatively lower true positive rates. As linear
 regression model predicts continuous variables, not discrete outcomes,
@@ -4995,648 +5220,3 @@ regression, logistic regression can directly predict probabilities
 (values that are restricted to the (0,1) interval), furthermore, those
 probabilities are well-calibrated when compared to the linear
 regression.
-
-<table style="border-collapse:collapse; border:none;">
-
-<tr>
-
-<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
-
- 
-
-</th>
-
-<th colspan="2" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
-
-viral
-
-</th>
-
-</tr>
-
-<tr>
-
-<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
-
-Predictors
-
-</td>
-
-<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
-
-Coefficients
-
-</td>
-
-<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
-
-p
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-(Intercept)
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.63
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-n\_tokens\_title
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.02
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>0.004</strong>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-n\_tokens\_content
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.00
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.086
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-num\_other\_hrefs
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.02
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-num\_self\_hrefs
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.01
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>0.039</strong>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-num\_imgs
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.01
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-num\_videos
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.01
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-average\_token\_length
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.24
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-num\_keywords
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.04
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-data\_channel\_is\_lifestyle
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.31
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-data\_channel\_is\_entertainment
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.38
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-data\_channel\_is\_bus
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.28
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-data\_channel\_is\_socmed
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-1.17
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-data\_channel\_is\_tech
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.66
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-self\_reference\_avg\_sharess
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.00
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-weekday\_is\_monday
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.70
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-weekday\_is\_tuesday
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.78
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-weekday\_is\_wednesday
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.78
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-weekday\_is\_thursday
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.75
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-weekday\_is\_friday
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.57
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-weekday\_is\_saturday
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.24
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-global\_rate\_positive\_words
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-4.34
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-global\_rate\_negative\_words
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.21
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.864
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-avg\_positive\_polarity
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.60
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-avg\_negative\_polarity
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-\-0.47
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-title\_subjectivity
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.13
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>0.001</strong>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-
-title\_sentiment\_polarity
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-0.20
-
-</td>
-
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-
-<strong>\<0.001
-
-</td>
-
-</tr>
-
-</table>
-
-Table 2.3.6. of the coefficients and their signinficance levels of the
-logistic regression model can be used to know how to improve the
-Mashable articles chance of getting viral.  
-Based on the logit model, it can be recommended to Mashable writers to
-increase rate of positive words in the content, focus more on data
-channels “Social Media” and “Tech” and avoid publishing on weekdays.
-
-\`\`\`
