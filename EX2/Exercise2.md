@@ -4935,7 +4935,7 @@ classification model came in the expense of its relatively lower true
 positive rate. But in general, the second approach performed better than
 the first approach.
 
-Why could classification generally outperform liner regression in this
+Why could classification generally outperform linear regression in this
 case? Firstly, what we want to predict is a binary variable having
 values 1 or 0. But linear regression model usually performs better in
 predicting continuous variables than discrete variables. Secondly, it
