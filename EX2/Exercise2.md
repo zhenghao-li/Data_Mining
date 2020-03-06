@@ -193,7 +193,7 @@ Baseline Model 1
 
 <td style="text-align:right;">
 
-66285.75
+65994.54
 
 </td>
 
@@ -209,7 +209,7 @@ Price Model 1
 
 <td style="text-align:right;">
 
-63312.27
+63140.08
 
 </td>
 
@@ -225,7 +225,7 @@ Price Model 2
 
 <td style="text-align:right;">
 
-57839.81
+58165.58
 
 </td>
 
@@ -241,7 +241,7 @@ Price Model 2.1
 
 <td style="text-align:right;">
 
-64135.00
+64348.99
 
 </td>
 
@@ -381,7 +381,7 @@ Baseline Model 2
 
 <td style="text-align:right;">
 
-59949.27
+60196.31
 
 </td>
 
@@ -397,7 +397,7 @@ House Value Model 1
 
 <td style="text-align:right;">
 
-57876.72
+58258.30
 
 </td>
 
@@ -413,7 +413,7 @@ House Value Model 2
 
 <td style="text-align:right;">
 
-58027.34
+58607.79
 
 </td>
 
@@ -1144,7 +1144,7 @@ NewConstruction
 
 <td style="text-align:right;">
 
-751.35
+794.41
 
 </td>
 
@@ -1208,7 +1208,7 @@ waterfront
 
 <td style="text-align:right;">
 
-1042.14
+1215.94
 
 </td>
 
@@ -1224,7 +1224,7 @@ centralAir
 
 <td style="text-align:right;">
 
-137.18
+153.03
 
 </td>
 
@@ -1240,7 +1240,7 @@ livingArea\*heating
 
 <td style="text-align:right;">
 
-326.43
+327.47
 
 </td>
 
@@ -1256,7 +1256,7 @@ livingArea\*fuel
 
 <td style="text-align:right;">
 
-183.82
+202.05
 
 </td>
 
@@ -1276,7 +1276,7 @@ variables and interactions are driving prices more. By coefficients,
 variables like lotSize, heaing, and fuel are strong in driving prices
 while according to the RMSE they have no such significant impact on
 prices. And variables like livingArea \* heating are important to drive
-prices based on RMSE but their magnitudes are too samll from the
+prices based on RMSE but their magnitudes are too small from the
 perspective of coefficients. Combining the results of two approaches, it
 may be less disputable to conclude that waterfront, newConstruction, and
 centralAir are three most important factors in driving prices.
@@ -1342,7 +1342,7 @@ The Price Model
 
 <td style="text-align:right;">
 
-62587.06
+62592.55
 
 </td>
 
@@ -1364,13 +1364,13 @@ The House Value Model
 
 <td style="text-align:right;">
 
-60339.57
+60048.11
 
 </td>
 
 <td style="text-align:right;">
 
-13
+14
 
 </td>
 
@@ -1484,7 +1484,7 @@ Accuracy Rate of Model 1
 
 <td style="text-align:right;">
 
-0.8307
+0.8358
 
 </td>
 
@@ -1500,7 +1500,7 @@ Accuracy Rate of Model 2
 
 <td style="text-align:right;">
 
-0.8426
+0.8486
 
 </td>
 
@@ -1516,7 +1516,7 @@ Accuracy Rate of Model 3
 
 <td style="text-align:right;">
 
-0.8428
+0.8482
 
 </td>
 
@@ -1532,7 +1532,7 @@ Error Rate of Model 1
 
 <td style="text-align:right;">
 
-0.1698
+0.1647
 
 </td>
 
@@ -1548,7 +1548,7 @@ Error Rate of Model 2
 
 <td style="text-align:right;">
 
-0.1579
+0.1519
 
 </td>
 
@@ -1564,7 +1564,7 @@ Error Rate of Model 3
 
 <td style="text-align:right;">
 
-0.1576
+0.1523
 
 </td>
 
@@ -2558,7 +2558,7 @@ Radiologist 13
 
 <td style="text-align:right;">
 
-0.1198299
+0.1352249
 
 </td>
 
@@ -2574,7 +2574,7 @@ Radiologist 34
 
 <td style="text-align:right;">
 
-0.0859186
+0.0851466
 
 </td>
 
@@ -2590,7 +2590,7 @@ Radiologist 66
 
 <td style="text-align:right;">
 
-0.2052550
+0.1739143
 
 </td>
 
@@ -2606,7 +2606,7 @@ Radiologist 89
 
 <td style="text-align:right;">
 
-0.2108345
+0.2083945
 
 </td>
 
@@ -2622,7 +2622,7 @@ Radiologist 95
 
 <td style="text-align:right;">
 
-0.1304519
+0.1418196
 
 </td>
 
@@ -3194,7 +3194,7 @@ Deviance: Baseline
 
 <td style="text-align:right;">
 
-28.66264
+28.23927
 
 </td>
 
@@ -3210,7 +3210,7 @@ Deviance: Menopause
 
 <td style="text-align:right;">
 
-29.37829
+28.90002
 
 </td>
 
@@ -3226,7 +3226,7 @@ Deviance: Density
 
 <td style="text-align:right;">
 
-31.59441
+30.80299
 
 </td>
 
@@ -3242,7 +3242,7 @@ Deviance: History
 
 <td style="text-align:right;">
 
-28.89644
+28.44924
 
 </td>
 
@@ -3258,7 +3258,7 @@ Deviance: Symptoms
 
 <td style="text-align:right;">
 
-28.90431
+28.51394
 
 </td>
 
@@ -3274,7 +3274,7 @@ Deviance: Age
 
 <td style="text-align:right;">
 
-28.93191
+28.43152
 
 </td>
 
@@ -3290,7 +3290,7 @@ Deviance: Density\&Symptoms
 
 <td style="text-align:right;">
 
-31.83372
+31.06805
 
 </td>
 
@@ -3306,7 +3306,7 @@ Deviance: Density, Symptoms & Menopause
 
 <td style="text-align:right;">
 
-32.45699
+31.65222
 
 </td>
 
@@ -4247,7 +4247,7 @@ Error.rate.of.Linear.Model
 
 <td style="text-align:right;">
 
-0.4405
+0.4400
 
 </td>
 
@@ -4263,7 +4263,7 @@ Error.rate.of.Null.Model
 
 <td style="text-align:right;">
 
-0.4930
+0.4935
 
 </td>
 
@@ -4279,7 +4279,7 @@ TPR.of.Linear.Model
 
 <td style="text-align:right;">
 
-0.9048
+0.9052
 
 </td>
 
@@ -4295,7 +4295,7 @@ FPR.of.Linear.Model
 
 <td style="text-align:right;">
 
-0.7761
+0.7763
 
 </td>
 
@@ -4349,13 +4349,13 @@ True viral status No
 
 <td style="text-align:center;">
 
-897
+950
 
 </td>
 
 <td style="text-align:center;">
 
-3112
+3061
 
 </td>
 
@@ -4371,13 +4371,13 @@ True viral status Yes
 
 <td style="text-align:center;">
 
-388
+381
 
 </td>
 
 <td style="text-align:center;">
 
-3532
+3537
 
 </td>
 
@@ -4445,7 +4445,7 @@ Min ErrorRate
 
 <td style="text-align:right;">
 
-0.4339765
+0.4206079
 
 </td>
 
@@ -4467,13 +4467,13 @@ Max True Positive Rate
 
 <td style="text-align:right;">
 
-0.9932642
+0.9945988
 
 </td>
 
 <td style="text-align:right;">
 
-99
+97
 
 </td>
 
@@ -4489,7 +4489,7 @@ Min False Positive Rate
 
 <td style="text-align:right;">
 
-0.5945137
+0.5898076
 
 </td>
 
@@ -4537,7 +4537,7 @@ Error.Rate.of.Logit.Model
 
 <td style="text-align:right;">
 
-0.3841
+0.3837
 
 </td>
 
@@ -4553,7 +4553,7 @@ Error.Rate.of.Null.Model
 
 <td style="text-align:right;">
 
-0.4935
+0.4934
 
 </td>
 
@@ -4569,7 +4569,7 @@ TPR.of.Logit.Model
 
 <td style="text-align:right;">
 
-0.5653
+0.5655
 
 </td>
 
@@ -4585,7 +4585,7 @@ FPR.of.Logit.Model
 
 <td style="text-align:right;">
 
-0.3348
+0.3342
 
 </td>
 
@@ -4639,13 +4639,13 @@ True viral status No
 
 <td style="text-align:center;">
 
-2658
+2698
 
 </td>
 
 <td style="text-align:center;">
 
-1349
+1259
 
 </td>
 
@@ -4661,13 +4661,13 @@ True viral status Yes
 
 <td style="text-align:center;">
 
-1672
+1782
 
 </td>
 
 <td style="text-align:center;">
 
-2250
+2190
 
 </td>
 
@@ -4733,7 +4733,7 @@ Min ErrorRate
 
 <td style="text-align:right;">
 
-0.3717997
+0.3665027
 
 </td>
 
@@ -4755,13 +4755,13 @@ Max True Positive Rate
 
 <td style="text-align:right;">
 
-0.5892212
+0.5888021
 
 </td>
 
 <td style="text-align:right;">
 
-99
+97
 
 </td>
 
@@ -4777,7 +4777,7 @@ Min False Positive Rate
 
 <td style="text-align:right;">
 
-0.3127217
+0.3104909
 
 </td>
 
@@ -4841,13 +4841,13 @@ Error rate of Model
 
 <td style="text-align:right;">
 
-0.3841
+0.3837
 
 </td>
 
 <td style="text-align:right;">
 
-0.4405
+0.4400
 
 </td>
 
@@ -4863,13 +4863,13 @@ Error rate of Null model
 
 <td style="text-align:right;">
 
-0.4935
+0.4934
 
 </td>
 
 <td style="text-align:right;">
 
-0.4930
+0.4935
 
 </td>
 
@@ -4885,13 +4885,13 @@ TPR
 
 <td style="text-align:right;">
 
-0.5653
+0.5655
 
 </td>
 
 <td style="text-align:right;">
 
-0.9048
+0.9052
 
 </td>
 
@@ -4907,13 +4907,13 @@ FPR
 
 <td style="text-align:right;">
 
-0.3348
+0.3342
 
 </td>
 
 <td style="text-align:right;">
 
-0.7761
+0.7763
 
 </td>
 
@@ -4935,26 +4935,29 @@ classification model came in the expense of its relatively lower true
 positive rate. But in general, the second approach performed better than
 the first approach.
 
-Why could classification generally outperformed liner regression in this
+Why could classification generally outperform liner regression in this
 case? Firstly, what we want to predict is a binary variable having
 values 1 or 0. But linear regression model usually performs better in
 predicting continuous variables than discrete variables. Secondly, it
-potentially has more room for errors that comes from choosing the
+potentially has more room for errors that come from choosing the
 threshold for the followed discretization. Categorization or
 discretization assumes that the relationship between the predictor and
 the response is flat within intervals and the threshold is very likely
 to be estimated with sampling error. Moreover, the errors we get from
 the first stage of doing linear regression might be magnified in the
-second stage when choosing threshold. That explains why the linear
-regression has higher error rates and false positive rates.
+second stage when choosing the threshold. But there is no error that is
+probably magnified in the later logistic regression when choosing a
+desired threshold in the raw data at first. That explains why the linear
+regression has higher error rates and false positive rates than logistic
+regression.
 
 Conversely, logistic regression performs better on classification
 problems due to the fact that they are constructed to predict
 conditional probabilities where the binary outcomes are in the discrete
 form. Unlike linear regression, logistic regression can directly predict
-probabilities (values that are restricted to the (0,1) interval),
-furthermore, those probabilities are well-calibrated when compared to
-the linear regression.
+probabilities (values that are restricted to the (0,1) interval). Those
+probabilities are well-calibrated when compared to the linear
+regression.
 
 **Extra Question: How to improve an article’s chance to become viral?**
 
@@ -5014,7 +5017,7 @@ p
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.59
+0.55
 
 </td>
 
@@ -5042,7 +5045,7 @@ n\_tokens\_title
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.035</strong>
+<strong>0.012</strong>
 
 </td>
 
@@ -5064,7 +5067,7 @@ n\_tokens\_content
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.230
+<strong>0.018</strong>
 
 </td>
 
@@ -5108,7 +5111,7 @@ num\_self\_hrefs
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.002</strong>
+<strong>\<0.001
 
 </td>
 
@@ -5124,7 +5127,7 @@ num\_imgs
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.02
+0.01
 
 </td>
 
@@ -5168,7 +5171,7 @@ average\_token\_length
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.25
+\-0.23
 
 </td>
 
@@ -5190,7 +5193,7 @@ num\_keywords
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.04
+0.05
 
 </td>
 
@@ -5212,7 +5215,7 @@ data\_channel\_is\_lifestyle
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.33
+0.29
 
 </td>
 
@@ -5234,7 +5237,7 @@ data\_channel\_is\_entertainment
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.37
+\-0.32
 
 </td>
 
@@ -5256,7 +5259,7 @@ data\_channel\_is\_bus
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.31
+0.29
 
 </td>
 
@@ -5278,7 +5281,7 @@ data\_channel\_is\_socmed
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-1.12
+1.14
 
 </td>
 
@@ -5300,7 +5303,7 @@ data\_channel\_is\_tech
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.67
+0.69
 
 </td>
 
@@ -5366,7 +5369,7 @@ weekday\_is\_tuesday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.76
+\-0.81
 
 </td>
 
@@ -5388,7 +5391,7 @@ weekday\_is\_wednesday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.79
+\-0.81
 
 </td>
 
@@ -5410,7 +5413,7 @@ weekday\_is\_thursday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.72
+\-0.74
 
 </td>
 
@@ -5432,7 +5435,7 @@ weekday\_is\_friday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.57
+\-0.59
 
 </td>
 
@@ -5454,13 +5457,13 @@ weekday\_is\_saturday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.19
+0.22
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.005</strong>
+<strong>0.001</strong>
 
 </td>
 
@@ -5476,7 +5479,7 @@ global\_rate\_positive\_words
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-4.84
+4.11
 
 </td>
 
@@ -5498,13 +5501,13 @@ global\_rate\_negative\_words
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.53
+\-0.85
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.665
+0.485
 
 </td>
 
@@ -5520,7 +5523,7 @@ avg\_positive\_polarity
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.51
+0.58
 
 </td>
 
@@ -5542,7 +5545,7 @@ avg\_negative\_polarity
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.50
+\-0.41
 
 </td>
 
@@ -5564,7 +5567,7 @@ title\_subjectivity
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.15
+0.17
 
 </td>
 
@@ -5586,7 +5589,7 @@ title\_sentiment\_polarity
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.19
+0.20
 
 </td>
 
