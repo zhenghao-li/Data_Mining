@@ -5604,7 +5604,7 @@ title\_sentiment\_polarity
 </table>
 
 Table 3.8 shows the coefficients and their significance levels of the
-logistic regression model above can be used to know how to improve the
+logistic regression model, which can be used to know how to improve the
 Mashable articles chance of getting viral.  
 Based on the logistic model’s coefficients, it can be recommended to
 Mashable writers to increase the rate of positive words in the content,
