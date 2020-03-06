@@ -4680,7 +4680,7 @@ True viral status Yes
 Overall error rate of the logistic model is 39%, with an absolute
 improvement of 10% over the null model’s error rate. On average, its
 true positive rate is about 57% and its false positive rate is about
-37%.
+33%.
 
 KNN regression model for classification yielded slightly better results
 of error rate and false positive rate than the logistic regression
