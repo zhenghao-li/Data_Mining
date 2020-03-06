@@ -13,7 +13,7 @@ In this exercise, the purpose is to choose a model that outperforms the
 above medium model in predicting housing prices based on the dataset
 Saratoga. The dataset has 1728 observations and 16 variables including
 price, land value, age, rooms, and other house characteristics. The
-target variable is price. Before building models, there is an issue
+target variable is the price. Before building models, there is an issue
 about the target variable: a housing price consists of the land value
 and the house value. The land value is predetermined before a house is
 built and is less likely to be affected by those house characteristics.
@@ -193,7 +193,7 @@ Baseline Model 1
 
 <td style="text-align:right;">
 
-64778.46
+66285.75
 
 </td>
 
@@ -209,7 +209,7 @@ Price Model 1
 
 <td style="text-align:right;">
 
-62179.52
+63312.27
 
 </td>
 
@@ -225,7 +225,7 @@ Price Model 2
 
 <td style="text-align:right;">
 
-56862.00
+57839.81
 
 </td>
 
@@ -241,7 +241,7 @@ Price Model 2.1
 
 <td style="text-align:right;">
 
-63054.21
+64135.00
 
 </td>
 
@@ -252,15 +252,15 @@ Price Model 2.1
 </table>
 
 According to the above table, the Price Model 2 has the lowest average
-out-of-sample around 58000. However, the Price Model 2 includes the
-variable landValue as a feature variable, which is a part of price.
-Therefore, the low RMSE of Price Model 2 is probably from using a part
-of the target variable to explain the outcome, which disturbs the
-assessment of the predictive abilities of the feature variables. To see
-that, we ran the Price Model 2 after removing landValue and its
-interactions with other feature variables on the right-hand side. The
-resulted RMSE (of Price Model 2.1) increased to around 64000, though
-still lower than the Baseline Model 1.
+out-of-sample (usually around 58000, sometimes even below 57000).
+However, the Price Model 2 includes the variable landValue as a feature
+variable, which is a part of price. Therefore, the low RMSE of Price
+Model 2 is probably from using a part of the target variable to explain
+the outcome, which disturbs the assessment of the predictive abilities
+of the feature variables. To see that, we ran the Price Model 2 after
+removing landValue and its interactions with other feature variables on
+the right-hand side. The resulted RMSE (of Price Model 2.1) increased to
+around 64000, though still lower than the Baseline Model 1.
 
 To address this problem, we implemented the Step 2, building three
 models with the houseValue as the target variable, as shown in Table 1.3
@@ -381,7 +381,7 @@ Baseline Model 2
 
 <td style="text-align:right;">
 
-60863.64
+59949.27
 
 </td>
 
@@ -397,7 +397,7 @@ House Value Model 1
 
 <td style="text-align:right;">
 
-58885.02
+57876.72
 
 </td>
 
@@ -413,7 +413,7 @@ House Value Model 2
 
 <td style="text-align:right;">
 
-59407.03
+58027.34
 
 </td>
 
@@ -509,13 +509,13 @@ p
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-107330.69
+110769.68
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-56054.61 – 158606.77
+62637.15 – 158902.20
 
 </td>
 
@@ -537,19 +537,19 @@ landValue
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.18
+\-0.13
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.28 – -0.08
+\-0.22 – -0.04
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.001</strong>
+<strong>0.005</strong>
 
 </td>
 
@@ -565,19 +565,19 @@ rooms
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-2782.47
+\-3657.47
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-7230.59 – 1665.65
+\-7761.11 – 446.18
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.220
+0.081
 
 </td>
 
@@ -593,19 +593,19 @@ bathrooms
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-17606.43
+14342.88
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-3798.08 – 39010.93
+\-5163.90 – 33849.66
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.107
+0.149
 
 </td>
 
@@ -621,19 +621,19 @@ lotSize
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-18146.34
+16844.56
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-6481.51 – 29811.18
+5332.89 – 28356.23
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.002</strong>
+<strong>0.004</strong>
 
 </td>
 
@@ -649,13 +649,13 @@ newConstruction \[No\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-54171.39
+51049.22
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-38802.87 – 69539.92
+36874.69 – 65223.74
 
 </td>
 
@@ -677,13 +677,13 @@ livingArea
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-71.12
+65.82
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-45.26 – 96.97
+42.13 – 89.52
 
 </td>
 
@@ -705,19 +705,19 @@ pctCollege
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-166.89
+\-107.08
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-479.89 – 146.12
+\-397.50 – 183.34
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.296
+0.470
 
 </td>
 
@@ -733,19 +733,19 @@ heating \[hot water/steam\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-48893.08
+40378.72
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-23106.90 – 74679.27
+16844.61 – 63912.84
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>\<0.001
+<strong>0.001</strong>
 
 </td>
 
@@ -761,19 +761,19 @@ heating \[electric\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-69827.23
+62614.18
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-27079.80 – 166734.27
+\-31659.62 – 156887.97
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.158
+0.193
 
 </td>
 
@@ -789,19 +789,19 @@ fuel \[electric\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-41375.08
+\-48188.87
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-137460.26 – 54710.11
+\-141796.02 – 45418.28
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.398
+0.313
 
 </td>
 
@@ -817,19 +817,19 @@ fuel \[oil\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-36382.08
+36711.17
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-8812.25 – 63951.91
+11086.20 – 62336.14
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.010</strong>
+<strong>0.005</strong>
 
 </td>
 
@@ -845,13 +845,13 @@ centralAir \[No\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-12645.25
+\-11437.89
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-19914.79 – -5375.71
+\-18106.76 – -4769.02
 
 </td>
 
@@ -873,13 +873,13 @@ waterfront \[No\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-132825.81
+\-124358.87
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-164585.17 – -101066.45
+\-154491.25 – -94226.49
 
 </td>
 
@@ -901,19 +901,19 @@ rooms \* bathrooms
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-832.67
+1501.79
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-1951.33 – 3616.68
+\-1052.60 – 4056.17
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.557
+0.249
 
 </td>
 
@@ -929,19 +929,19 @@ rooms \* livingArea
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-1.69
+1.55
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-1.17 – 4.54
+\-1.09 – 4.19
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.248
+0.250
 
 </td>
 
@@ -957,19 +957,19 @@ lotSize \* livingArea
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-4.47
+\-4.21
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-10.20 – 1.26
+\-9.92 – 1.49
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.126
+0.148
 
 </td>
 
@@ -985,13 +985,13 @@ livingArea \* heating \[hot<br>water/steam\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-34.65
+\-29.83
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-47.97 – -21.34
+\-42.06 – -17.60
 
 </td>
 
@@ -1013,19 +1013,19 @@ livingArea \* heating<br>\[electric\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-42.81
+\-38.58
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-98.68 – 13.06
+\-93.25 – 16.08
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.133
+0.166
 
 </td>
 
@@ -1041,19 +1041,19 @@ livingArea \* fuel<br>\[electric\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-19.11
+24.00
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-35.79 – 74.01
+\-29.96 – 77.96
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.495
+0.383
 
 </td>
 
@@ -1069,19 +1069,19 @@ livingArea \* fuel \[oil\]
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-26.46
+\-26.60
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-41.87 – -11.04
+\-41.17 – -12.03
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.001</strong>
+<strong>\<0.001
 
 </td>
 
@@ -1144,7 +1144,7 @@ NewConstruction
 
 <td style="text-align:right;">
 
-770.13
+751.35
 
 </td>
 
@@ -1208,7 +1208,7 @@ waterfront
 
 <td style="text-align:right;">
 
-1202.57
+1042.14
 
 </td>
 
@@ -1224,7 +1224,7 @@ centralAir
 
 <td style="text-align:right;">
 
-0.00
+137.18
 
 </td>
 
@@ -1240,7 +1240,7 @@ livingArea\*heating
 
 <td style="text-align:right;">
 
-307.79
+326.43
 
 </td>
 
@@ -1256,7 +1256,7 @@ livingArea\*fuel
 
 <td style="text-align:right;">
 
-226.17
+183.82
 
 </td>
 
@@ -1266,10 +1266,20 @@ livingArea\*fuel
 
 </table>
 
-From the differences in average RMSEs, we can see that four variables
-have very strong impact on prices: waterfront, NewConstruction,
-livingArea \* heating, and livingArea \* fuel. However, other variables
-are not such strong drivers of prices from the perspective of RMSE.
+From the difference in RMSE, we can see that five variables have very
+strong impact on prices: waterfront, newConstruction, livingArea \*
+heating, and livingArea \* fuel and centralAir. Other variables are not
+strong drivers of prices from the a perspective of RMSE.
+
+Hence, coefficients and RMSE tell us some different results about which
+variables and interactions are driving prices more. By coefficients,
+variables like lotSize, heaing, and fuel are strong in driving prices
+while according to the RMSE they have no such significant impact on
+prices. And variables like livingArea \* heating are important to drive
+prices based on RMSE but their magnitudes are too samll from the
+perspective of coefficients. Combining the results of two approaches, it
+may be less disputable to conclude that waterfront, newConstruction, and
+centralAir are three most important factors in driving prices.
 
 ## Question 3: The Performance of KNN Method
 
@@ -1332,7 +1342,7 @@ The Price Model
 
 <td style="text-align:right;">
 
-62169.30
+62587.06
 
 </td>
 
@@ -1354,13 +1364,13 @@ The House Value Model
 
 <td style="text-align:right;">
 
-59968.24
+60339.57
 
 </td>
 
 <td style="text-align:right;">
 
-14
+13
 
 </td>
 
@@ -1426,15 +1436,15 @@ symptoms + β<sub>3</sub> age \* symptoms + β<sub>4</sub> history +
 radiologist
 
 We performed 100 simulations on each model and computed the average
-out-of-sample accuracy rate and the average out-of-sample classification
-error rate for each of the three models. Based on these performance
-rates, we decided which model to use to predict the probabilities of
-recall for each radiologist. All three models have high out of sample
-performance; however, models 2 and 3 have higher out of sample
-accuracies and lower classification error rates on average than model 1.
+out-of-sample accuracy rate and the average out-of-sample error rate for
+each of the three models. Based on these performance rates, we decided
+which model to use to predict the probabilities of recall for each
+radiologist. All three models have high out of sample performance;
+however, models 2 and 3 have higher out of sample accuracy rates and
+lower error rates on average than model 1.
 
-Table 2.1 displays the average out of sample accuracies and
-classification error rates for each of the three models.
+Table 2.1 displays the average out of sample accuracy rates and error
+rates for each of the three models.
 
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 
@@ -1468,13 +1478,13 @@ Mean
 
 <td style="text-align:left;">
 
-Accuracy Out Model 1
+Accuracy Rate of Model 1
 
 </td>
 
 <td style="text-align:right;">
 
-0.8360
+0.8307
 
 </td>
 
@@ -1484,13 +1494,13 @@ Accuracy Out Model 1
 
 <td style="text-align:left;">
 
-Accuracy Out Model 2
+Accuracy Rate of Model 2
 
 </td>
 
 <td style="text-align:right;">
 
-0.8470
+0.8426
 
 </td>
 
@@ -1500,13 +1510,13 @@ Accuracy Out Model 2
 
 <td style="text-align:left;">
 
-Accuracy Out Model 3
+Accuracy Rate of Model 3
 
 </td>
 
 <td style="text-align:right;">
 
-0.8472
+0.8428
 
 </td>
 
@@ -1516,13 +1526,13 @@ Accuracy Out Model 3
 
 <td style="text-align:left;">
 
-Classification Errors Model 1
+Error Rate of Model 1
 
 </td>
 
 <td style="text-align:right;">
 
-0.1645
+0.1698
 
 </td>
 
@@ -1532,13 +1542,13 @@ Classification Errors Model 1
 
 <td style="text-align:left;">
 
-Classification Errors Model 2
+Error Rate of Model 2
 
 </td>
 
 <td style="text-align:right;">
 
-0.1535
+0.1579
 
 </td>
 
@@ -1548,13 +1558,13 @@ Classification Errors Model 2
 
 <td style="text-align:left;">
 
-Classification Errors Model 3
+Error Rate of Model 3
 
 </td>
 
 <td style="text-align:right;">
 
-0.1533
+0.1576
 
 </td>
 
@@ -1566,21 +1576,22 @@ Classification Errors Model 3
 
 We use two indicators to determine which radiologists are more
 clinically conservative and which are less. The first approach is to
-examine the radiologists’ coefficients and compare them while holding
-all risk factors constant. The second approach is to compare their
-overall predicted probabilities of recalling a patient.
+examine the radiologists’ coefficients, computing odds, and compare them
+while holding all risk factors constant. The second approach is to
+compare their overall predicted probabilities of recalling a patient.
 
-We decide to use model 2 to run a logistic regression and compare the
+We decided to use model 2 to run a logistic regression and compare the
 coefficients of each radiologist variable. The coefficient of
 radiologist 89 is the highest. Therefore, given that radiologist 89 is
 making the recall decision, the odds of a recall is multiplied by
-exp(0.46) \~ 1.59, holding all risk factors constant. Hence, out of all
-five radiologists, 89 is the most clinically conservative in recalling
-patients. On the other hand, radiologist 34 has the lowest coefficient,
-so if this radiologist is making the recall decision, the odds of a
-recall are multiplied by exp(-0.52) \~ 0.59, holding all other variables
-constant. Therefore, radiologist 34 is the least clinically conservative
-in recalling patients and he has the highest threshold for wanting to
+exp(0.46) \~ 1.59, compared to radiologist 13, holding all risk factors
+constant. Hence, out of all five radiologists, 89 is the most clinically
+conservative in recalling patients. On the other hand, radiologist 34
+has the lowest coefficient, so if this radiologist is making the recall
+decision, the odds of a recall are multiplied by exp(-0.52) \~ 0.59,
+compared to radiologist 13, holding all other variables constant.
+Therefore, radiologist 34 is the least clinically conservative in
+recalling patients and he has the highest threshold for wanting to
 double check the patient’s results.
 
 Table 2.2 shows the coefficients resulting from the regression model 2.
@@ -1985,17 +1996,15 @@ radiologist \[95\]
 
 </table>
 
-Table 2.3 displays the odds ratios resulted from regressing model 2.
-Considering the fact that radiologist 13 is the base for the logistic
-model, radiologist 89 and 66 both increase the odds of recall compared
-to radiologist 13, while radiologists 95 and 34 both decrease the odds
-of recall compared to radiologist 13. Hence, observing the odds ratios
-of each radiologist, the ranking of radiologists from most clinically
-conservative to least clinically conservative is as follows: radiologist
-89, radiologist 66, radiologist 13, radiologist 95, radiologist 34.
-
-Table 2.3 confirms the above conclusions and shows odds ratios,
-confidence intervals and p-values estimated from regressing model 2.
+Table 2.3 displays the odds ratios, confidence intervals and p-values
+estimated from regressing model 2. Considering the fact that radiologist
+13 is the base for the logistic model, radiologist 89 and 66 both
+increase the odds of recall compared to radiologist 13, while
+radiologists 95 and 34 both decrease the odds of recall compared to
+radiologist 13. Hence, observing the odds ratios of each radiologist,
+the ranking of radiologists from most clinically conservative to least
+clinically conservative is as follows: radiologist 89, radiologist 66,
+radiologist 13, radiologist 95, radiologist 34.
 
 <table style="border-collapse:collapse; border:none;">
 
@@ -2500,7 +2509,7 @@ radiologist \[95\]
 </table>
 
 To address the problem that radiologists do not see the same patients we
-used counterfactual approach. We applied model 2 to compute the
+used a counterfactual approach. We applied model 2 to compute the
 predicted probabilities for each radiologist. For a test set, we used
 the whole data set but for each prediction we transformed the first
 column to include only one radiologist per test set. In this way, each
@@ -2549,7 +2558,7 @@ Radiologist 13
 
 <td style="text-align:right;">
 
-0.1399278
+0.1198299
 
 </td>
 
@@ -2565,7 +2574,7 @@ Radiologist 34
 
 <td style="text-align:right;">
 
-0.0979331
+0.0859186
 
 </td>
 
@@ -2581,7 +2590,7 @@ Radiologist 66
 
 <td style="text-align:right;">
 
-0.1954165
+0.2052550
 
 </td>
 
@@ -2597,7 +2606,7 @@ Radiologist 89
 
 <td style="text-align:right;">
 
-0.1963964
+0.2108345
 
 </td>
 
@@ -2613,7 +2622,7 @@ Radiologist 95
 
 <td style="text-align:right;">
 
-0.1387934
+0.1304519
 
 </td>
 
@@ -2627,12 +2636,12 @@ As revealed from Table 2.4, radiologist 89 can be regarded as the most
 clinically conservative out of all radiologists, very closely followed
 by 66, since both their average predicted probabilities are the highest.
 On the other hand, radiologist 34 is the least conservative with the
-lowest average predicted probability recorded by both models, giving
-risk factors constant. Therefore, if we compare radiologist 89 to
-radiologist 34, we can state that radiologist 89 has a lower threshold
-for wanting to double-check the patient’s results compared to
-radiologist 34. These results confirm the conclusion from our first
-approach where we compared coefficients.
+lowest average predicted probability, giving risk factors constant.
+Therefore, if we compare radiologist 89 to radiologist 34, we can state
+that radiologist 89 has a lower threshold for wanting to double-check
+the patient’s results compared to radiologist 34. These results confirm
+the conclusion from our first approach where we compared coefficients
+and odds.
 
 To confirm the results above, we also computed false negative rates and
 false positive rates for each radiologist. If a radiologist has the
@@ -3103,7 +3112,7 @@ decisions that it makes about the class label.
 
 By calculating the likelihood of each model’s predicted probabilities
 and then finding the deviance, we conclude whether radiologists should
-be weighting some clinical factors more heavily that they currently are.
+be weighting some clinical factors more heavily than they currently are.
 The decisions are based on the magnitude of the average deviance of each
 model. If a model has a smaller average deviance, it is performing
 better than a one with higher average deviance. Hence, the model with
@@ -3142,7 +3151,7 @@ for each model and then took average of these deviances to come up with
 an average deviance per model. The reason why we have included models 7
 and 8 is because density, symptoms and menopause have the lowest average
 deviances compared to all other models except the baseline model, model
-1. Hence, we wanted to observe if the average deviances of models 7 and
+1 . Hence, we wanted to observe if the average deviances of models 7 and
 8 will be lower than that of the baseline model.
 
 Table 2.5 reveals the average deviance of each of the 10 models.
@@ -3185,7 +3194,7 @@ Deviance: Baseline
 
 <td style="text-align:right;">
 
-27.90053
+28.66264
 
 </td>
 
@@ -3201,7 +3210,7 @@ Deviance: Menopause
 
 <td style="text-align:right;">
 
-28.37640
+29.37829
 
 </td>
 
@@ -3217,7 +3226,7 @@ Deviance: Density
 
 <td style="text-align:right;">
 
-31.89922
+31.59441
 
 </td>
 
@@ -3233,7 +3242,7 @@ Deviance: History
 
 <td style="text-align:right;">
 
-28.20911
+28.89644
 
 </td>
 
@@ -3249,7 +3258,7 @@ Deviance: Symptoms
 
 <td style="text-align:right;">
 
-28.17413
+28.90431
 
 </td>
 
@@ -3265,7 +3274,7 @@ Deviance: Age
 
 <td style="text-align:right;">
 
-27.97097
+28.93191
 
 </td>
 
@@ -3281,7 +3290,7 @@ Deviance: Density\&Symptoms
 
 <td style="text-align:right;">
 
-32.15095
+31.83372
 
 </td>
 
@@ -3297,7 +3306,7 @@ Deviance: Density, Symptoms & Menopause
 
 <td style="text-align:right;">
 
-32.52086
+32.45699
 
 </td>
 
@@ -3922,18 +3931,19 @@ age and menopause. Looking at model 3, the patients with a risk factor
 of density \[4\] (extremely danse) have exp(1.62) \~ 5.05 times the odds
 of having cancer as patients with density 1, even holding recall status
 constant. Hence, we can conclude that radiologists may not be weighting
-as much importance to density as they should be when interpreting the
-mammogram and deciding whether to recall the patient. Considering models
-6 and 2, patients older than 70 have exp(0.92) \~ 2.51 times the odds of
-having cancer as patients younger than 50, holding recall status
-constant. Also, if the patient has been observed to have a
-postmenounknown menopause risk factor, then she has exp(0.77) \~ 2.51
-times the odds of having cancer compared to a patient with post
-menopause $HT, holding recall constant. All 3 of these coefficients
-significantly influence the odds of having a cancer, especially the
-density \[4\] coefficient. Therefore, radiologists should be suggested
-to weigh density, age, and menopause more heavily than they currently
-are.
+as much importance to density (or more accurately, density \[4\]) as
+they should be when interpreting the mammogram and deciding whether to
+recall the patient. Considering models 6 and 2, patients older than 70
+have exp(0.92) \~ 2.51 times the odds of having cancer as patients
+younger than 50, holding recall status constant. Also, if the patient
+has been observed to have a postmenounknown menopause risk factor, then
+she has exp(0.77) \~ 2.51 times the odds of having cancer compared to a
+patient with post menopause $HT, holding recall constant. All 3 of these
+coefficients significantly influence the odds of having a cancer,
+especially the density \[4\] coefficient. Therefore, radiologists should
+be suggested to weigh density, age, and menopause (or more accurately,
+density \[4\], age above 70, and unknown menopause) more heavily than
+they currently are.
 
 Regressing cancer on these 3 variables: density, age and menopause
 together, increases the coefficients for density and age even more as
@@ -4198,19 +4208,24 @@ that binary variable on feature variables.
 First, we fit various linear regression models to predict the number of
 shares of Mashable’s articles that included all the article features as
 predictors, except those that were likely to be perfectly collinear with
-each other. At the next stage, the predicted shares were thresholded at
-1400 shares to evaluate the performance of the model on a test set.
-Since more than 50 percent articles in the raw data were not viral, the
-model which always predicted “not viral” was chosen as a baseline model.
-Afterwards, out-of-sample performances of our predictive models were
-evaluated compared to the out-of-sample performance of the baseline
+each other. At the next stage, all the predicted shares above 1400 were
+assigned 1,while all the other predicted shares were assigned 0.
+
+Besides, since about 51 percent articles in the raw data were not viral,
+the model which always predicted “not viral” was chosen as a baseline
+model. Afterwards, out-of-sample performances of our predictive models
+were evaluated compared to the out-of-sample performance of the baseline
 model.
 
-The model that has all article features as predictors has the lowest
-error rate compared to the Baseline model among others. Its averaged
-overall error rate, true positive rate and false positive rate across
-100 train/test splits together with confusion matrix for one of the
-iterations are shown below.
+The averaged overall error rate, true positive rate and false positive
+rate across 100 train/test splits together with a confusion matrix are
+shown in the table 3.1. For the error rate, we listed for both linear
+model and baseline model to see how much our linear model made an
+improvement. To see among true viral articles, how many were correctly
+predicted as “viral”, we calculated true positive rate of the linear
+model. To see among true non-viral articles, how many were wrongly
+predicted as “viral”, we calculated false positive rate of the linear
+model.
 
 <table>
 
@@ -4232,7 +4247,7 @@ Error.rate.of.Linear.Model
 
 <td style="text-align:right;">
 
-0.4408
+0.4405
 
 </td>
 
@@ -4248,7 +4263,7 @@ Error.rate.of.Null.Model
 
 <td style="text-align:right;">
 
-0.4929
+0.4930
 
 </td>
 
@@ -4264,7 +4279,7 @@ TPR.of.Linear.Model
 
 <td style="text-align:right;">
 
-0.9047
+0.9048
 
 </td>
 
@@ -4280,7 +4295,7 @@ FPR.of.Linear.Model
 
 <td style="text-align:right;">
 
-0.7765
+0.7761
 
 </td>
 
@@ -4334,13 +4349,13 @@ True viral status No
 
 <td style="text-align:center;">
 
-857
+897
 
 </td>
 
 <td style="text-align:center;">
 
-3073
+3112
 
 </td>
 
@@ -4356,13 +4371,13 @@ True viral status Yes
 
 <td style="text-align:center;">
 
-396
+388
 
 </td>
 
 <td style="text-align:center;">
 
-3603
+3532
 
 </td>
 
@@ -4372,15 +4387,17 @@ True viral status Yes
 
 </table>
 
-Overall error rate of the linear model is 44% with an absolute
+Overall error rate of the linear model is 44%, with an absolute
 improvement of 5% over the null model’s error rate. On average, its true
-positive rate is about 91% and its false positive rate is about 78%.
+positive rate is about 90% and its false positive rate is about 78%.
 
 In addition to the linear regression model, KNN regression model was
 also performed to predict the viral status of articles using the same
 approach of regressing first and thresholding next. From the table 3.3
-it can be seen that KNN model had very similar results to the linear
-regression model.  
+it can be seen that KNN model has very similar results to the linear
+regression model, except that the optimal value of K for true positive
+rate is different from values for error rate and false positive rate.
+Thus, KNN is more sensitive to the choosing of a specific K.
 
 <table>
 
@@ -4428,7 +4445,7 @@ Min ErrorRate
 
 <td style="text-align:right;">
 
-0.4328415
+0.4339765
 
 </td>
 
@@ -4450,13 +4467,13 @@ Max True Positive Rate
 
 <td style="text-align:right;">
 
-0.9951344
+0.9932642
 
 </td>
 
 <td style="text-align:right;">
 
-97
+99
 
 </td>
 
@@ -4472,7 +4489,7 @@ Min False Positive Rate
 
 <td style="text-align:right;">
 
-0.6028827
+0.5945137
 
 </td>
 
@@ -4491,22 +4508,14 @@ Min False Positive Rate
 ## Second Approach: Threshold first and classify second
 
 Second approach of building predictive model comes from the standpoint
-of classification. A new binomial variable for article being viral is
-defined. We fit a logistic regression that included all the article
+of classification. A new binary variable for article being viral is
+defined. We fited a logistic regression that included all the article
 features as predictors to directly predict the viral status as a target
-variable. The model which always predicts “not viral” was chosen as a
-baseline model and out-of-sample performances of our classification
-model were evaluated compared to the out-of-sample performance of the
+variable. The model which always predicted “not viral” was chosen as a
 baseline model.
 
-Similar to the approach with linear regression model, the full model
-that included all the article features as predictors, except those that
-were perfectly collinear with each other, was chosen among other
-logistic models with a smaller number of explanatory variables based on
-the comparison of error rates. Its averaged overall error rate, true
-positive rate and false positive rate across 100 train/test splits
-together with confusion matrix for one of the iterations are shown
-below.
+The averaged overall error rate, true positive rate and false positive
+rate together with a confusion matrix are shown in the table 3.4 .
 
 <table>
 
@@ -4528,7 +4537,7 @@ Error.Rate.of.Logit.Model
 
 <td style="text-align:right;">
 
-0.3842
+0.3841
 
 </td>
 
@@ -4544,7 +4553,7 @@ Error.Rate.of.Null.Model
 
 <td style="text-align:right;">
 
-0.4940
+0.4935
 
 </td>
 
@@ -4560,7 +4569,7 @@ TPR.of.Logit.Model
 
 <td style="text-align:right;">
 
-0.5634
+0.5653
 
 </td>
 
@@ -4576,7 +4585,7 @@ FPR.of.Logit.Model
 
 <td style="text-align:right;">
 
-0.3330
+0.3348
 
 </td>
 
@@ -4630,13 +4639,13 @@ True viral status No
 
 <td style="text-align:center;">
 
-2698
+2658
 
 </td>
 
 <td style="text-align:center;">
 
-1227
+1349
 
 </td>
 
@@ -4652,13 +4661,13 @@ True viral status Yes
 
 <td style="text-align:center;">
 
-1786
+1672
 
 </td>
 
 <td style="text-align:center;">
 
-2218
+2250
 
 </td>
 
@@ -4668,15 +4677,15 @@ True viral status Yes
 
 </table>
 
-Overall error rate of the logistic model is 39% with an absolute
+Overall error rate of the logistic model is 39%, with an absolute
 improvement of 10% over the null model’s error rate. On average, its
 true positive rate is about 57% and its false positive rate is about
 37%.
 
-KNN regression model for classification that directly predicts the viral
-status as a target variable yields similar results to the logistic
-regression model. However, in general, KNN will perform slightly better
-but is more unstable than the logistic model.
+KNN regression model for classification yielded slightly better results
+of error rate and false positive rate than the logistic regression
+model. But again, the optimal K values of different measures were
+unstable.
 
 <table>
 
@@ -4724,7 +4733,7 @@ Min ErrorRate
 
 <td style="text-align:right;">
 
-0.3699079
+0.3717997
 
 </td>
 
@@ -4746,13 +4755,13 @@ Max True Positive Rate
 
 <td style="text-align:right;">
 
-0.5881743
+0.5892212
 
 </td>
 
 <td style="text-align:right;">
 
-97
+99
 
 </td>
 
@@ -4768,7 +4777,7 @@ Min False Positive Rate
 
 <td style="text-align:right;">
 
-0.3076160
+0.3127217
 
 </td>
 
@@ -4832,13 +4841,13 @@ Error rate of Model
 
 <td style="text-align:right;">
 
-0.3842
+0.3841
 
 </td>
 
 <td style="text-align:right;">
 
-0.4408
+0.4405
 
 </td>
 
@@ -4854,13 +4863,13 @@ Error rate of Null model
 
 <td style="text-align:right;">
 
-0.4940
+0.4935
 
 </td>
 
 <td style="text-align:right;">
 
-0.4929
+0.4930
 
 </td>
 
@@ -4876,13 +4885,13 @@ TPR
 
 <td style="text-align:right;">
 
-0.5634
+0.5653
 
 </td>
 
 <td style="text-align:right;">
 
-0.9047
+0.9048
 
 </td>
 
@@ -4898,13 +4907,13 @@ FPR
 
 <td style="text-align:right;">
 
-0.3330
+0.3348
 
 </td>
 
 <td style="text-align:right;">
 
-0.7765
+0.7761
 
 </td>
 
@@ -4915,36 +4924,39 @@ FPR
 </table>
 
 Table 3.7 shows the comparison of two approaches based on their
-performance evaluation measures. If we evaluate the two approaches based
-on their error rates, it can be concluded that the second approach of
+performance evaluation. If we evaluate the two approaches based on their
+error rates, it can be concluded that the second approach of
 thresholding the shares of articles first and then using classification
-as a second step performs better than the first approach. It produces an
-absolute improvement of about 6% over the method of using the linear
-regression model first and then thresholding. In addition, the
-classification method gives lower false positive rates compared to the
-linear regression (relative improvement of about 45%). However, obtained
-improvements in the error rate and false positive rate of the
-classification model comes in the expense of its relatively lower true
-positive rates. As the linear regression model performs better in
-predicting continuous variables, not discrete outcomes, it potentially
-has more room for errors that comes from choosing the threshold for the
-followed discretization. Categorization or discretization assumes that
-the relationship between the predictor and the response is flat within
-intervals and the threshold is very likely to be estimated with sampling
-error. Moreover, the errors we get from the first stage linear
-regression might be magnified in the second stage when choosing
-threshold. That’s another reason why the linear regression has higher
-error rates and false positive rates.
+as a second step performed better than the first approach, with an
+absolute improvement of about 6% in error rate. In addition, the
+classification method also gave a lower false positive rate. However,
+obtained improvements in the error rate and false positive rate of the
+classification model came in the expense of its relatively lower true
+positive rate. But in general, the second approach performed better than
+the first approach.
 
-Logistic regression performs better on classification problems due to
-the fact that they are constructed to predict conditional probabilities
-where the binary outcomes are in the discrete form. Unlike linear
-regression, logistic regression can directly predict probabilities
-(values that are restricted to the (0,1) interval), furthermore, those
-probabilities are well-calibrated when compared to the linear
-regression.
+Why could classification generally outperformed liner regression in this
+case? Firstly, what we want to predict is a binary variable having
+values 1 or 0. But linear regression model usually performs better in
+predicting continuous variables than discrete variables. Secondly, it
+potentially has more room for errors that comes from choosing the
+threshold for the followed discretization. Categorization or
+discretization assumes that the relationship between the predictor and
+the response is flat within intervals and the threshold is very likely
+to be estimated with sampling error. Moreover, the errors we get from
+the first stage of doing linear regression might be magnified in the
+second stage when choosing threshold. That explains why the linear
+regression has higher error rates and false positive rates.
 
-*How to improve an article’s chance to become viral?*
+Conversely, logistic regression performs better on classification
+problems due to the fact that they are constructed to predict
+conditional probabilities where the binary outcomes are in the discrete
+form. Unlike linear regression, logistic regression can directly predict
+probabilities (values that are restricted to the (0,1) interval),
+furthermore, those probabilities are well-calibrated when compared to
+the linear regression.
+
+**Extra Question: How to improve an article’s chance to become viral?**
 
 <table style="border-collapse:collapse; border:none;">
 
@@ -5002,7 +5014,7 @@ p
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.64
+0.59
 
 </td>
 
@@ -5024,13 +5036,13 @@ n\_tokens\_title
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.02
+\-0.01
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.004</strong>
+<strong>0.035</strong>
 
 </td>
 
@@ -5052,7 +5064,7 @@ n\_tokens\_content
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.006</strong>
+0.230
 
 </td>
 
@@ -5096,7 +5108,7 @@ num\_self\_hrefs
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.020</strong>
+<strong>0.002</strong>
 
 </td>
 
@@ -5112,7 +5124,7 @@ num\_imgs
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.01
+0.02
 
 </td>
 
@@ -5156,7 +5168,7 @@ average\_token\_length
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.24
+\-0.25
 
 </td>
 
@@ -5200,7 +5212,7 @@ data\_channel\_is\_lifestyle
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.28
+0.33
 
 </td>
 
@@ -5244,7 +5256,7 @@ data\_channel\_is\_bus
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.30
+0.31
 
 </td>
 
@@ -5266,7 +5278,7 @@ data\_channel\_is\_socmed
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-1.15
+1.12
 
 </td>
 
@@ -5288,7 +5300,7 @@ data\_channel\_is\_tech
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.65
+0.67
 
 </td>
 
@@ -5332,7 +5344,7 @@ weekday\_is\_monday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.72
+\-0.68
 
 </td>
 
@@ -5354,7 +5366,7 @@ weekday\_is\_tuesday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.82
+\-0.76
 
 </td>
 
@@ -5376,7 +5388,7 @@ weekday\_is\_wednesday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.78
+\-0.79
 
 </td>
 
@@ -5398,7 +5410,7 @@ weekday\_is\_thursday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.76
+\-0.72
 
 </td>
 
@@ -5420,7 +5432,7 @@ weekday\_is\_friday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.58
+\-0.57
 
 </td>
 
@@ -5448,7 +5460,7 @@ weekday\_is\_saturday
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-<strong>0.004</strong>
+<strong>0.005</strong>
 
 </td>
 
@@ -5464,7 +5476,7 @@ global\_rate\_positive\_words
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-4.21
+4.84
 
 </td>
 
@@ -5486,13 +5498,13 @@ global\_rate\_negative\_words
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-1.04
+\-0.53
 
 </td>
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.391
+0.665
 
 </td>
 
@@ -5508,7 +5520,7 @@ avg\_positive\_polarity
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.49
+0.51
 
 </td>
 
@@ -5530,7 +5542,7 @@ avg\_negative\_polarity
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-\-0.54
+\-0.50
 
 </td>
 
@@ -5574,7 +5586,7 @@ title\_sentiment\_polarity
 
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 
-0.20
+0.19
 
 </td>
 
@@ -5588,9 +5600,9 @@ title\_sentiment\_polarity
 
 </table>
 
-Table of the coefficients and their significance levels of the logistic
-regression model above can be used to know how to improve the Mashable
-articles chance of getting viral.  
+Table 3.8 shows the coefficients and their significance levels of the
+logistic regression model above can be used to know how to improve the
+Mashable articles chance of getting viral.  
 Based on the logistic model’s coefficients, it can be recommended to
 Mashable writers to increase the rate of positive words in the content,
 focus more on data channels like “Social Media” and “Tech” and try to
