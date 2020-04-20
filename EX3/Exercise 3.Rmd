@@ -549,13 +549,13 @@ clust1w = kmeans(Xw, 2, nstart=25)
 
 p1.1 <- qplot(fixed.acidity, residual.sugar , data=wine, color=factor(clust1w$cluster))
 p1.2 <- qplot(fixed.acidity, residual.sugar , data=wine, color=factor(wine$color))
-grid.arrange(p1.1, p1.2, nrow = 2, top = "Figure 3.2. Results of K-means clustering for wine colors 
-in the dimensions of fixed acidity and residual sugar.")
+grid.arrange(p1.1, p1.2, nrow = 2, top = "**Figure 3.2. Results of K-means clustering for wine colors 
+in the dimensions of fixed acidity and residual sugar**")
 
 p1.3 <- qplot(total.sulfur.dioxide, volatile.acidity, data=wine, color=factor(clust1w$cluster))
 p1.4 <- qplot(total.sulfur.dioxide, volatile.acidity, data=wine, color=factor(wine$color))
-grid.arrange(p1.3, p1.4, nrow = 2, top = "Figure 3.3 Results of K-means clustering for wine colors 
-in the dimensions of total sulfur dioxide and volatile acidity.")
+grid.arrange(p1.3, p1.4, nrow = 2, top = "**Figure 3.3 Results of K-means clustering for wine colors 
+in the dimensions of total sulfur dioxide and volatile acidity**")
 
 ```
 
@@ -977,7 +977,7 @@ kable(table_pca,  caption ="**Table 4.4: An Improved Result of Hierarchical Clus
 
 
 ## Can We Have More Accurate, Unique or Complete Labels?
-The first drawback of the result in Table 4.3 also existed in Table 4.2 and Table 4.4, though in a much less severe way: 27 categories out of 34 categories were used to differentiate consumers into 10 clusters. Probably it was because the rest 7 categories were not discernable enough based on the data, but it could be the possibility that our method was not refined enough. Of course, we could pick out more categories, say, first six or seven categories with high sums of frequencies, from each cluster, to include categories as many as possible. However, usually the fourth or fifth category only had a relatively much smaller sum of frequencies than those of the first three categories. So, including more categories would likely put more infrequent or accident tweet into the description of distinct preferences. Moreover, some clusters might be not so distinguishable from other clusters. For example, Cluster 4 and 5, as well as Cluster 3 and 6, more likely consisted of the same group of people. The borders between those clusters were not so clear. Therefore, in this part, for each of 10 clusters, we tried to find out the unique category or the combination of several unique categories dominating all other categories by the sum of frequencies. Meanwhile, all those unique category or combinations of unique categories made up a partition of 34 categories. By doing so, we were attaching more accurate labels to each cluster to make them more distinguishable.
+The first problem of the result in Table 4.3 also exists in Table 4.2 and Table 4.4, though in a much less evident way: 27 categories out of 34 categories are used to differentiate consumers into 10 clusters. Probably it is because the rest 7 categories are not discernable or important enough based on the data, but it could be the possibility that our method was not refined enough. Of course, we could pick out more categories, say, first six or seven categories with high sums of frequencies, from each cluster, to include categories as many as possible. However, usually the categories below the third one only have relatively much smaller sums of frequencies than those of the first three categories. So, including more categories would be likely to put more infrequent or accident tweets into the description of distinct preferences. Moreover, some clusters may be not so distinguishable from other clusters. For example, Cluster 4 and 5, as well as Cluster 3 and 6, are more likely to consist of the same group of people. The borders between those clusters are not so clear. Therefore, in this part, for each of 10 clusters, we tried to find out the unique category or the combination of several unique categories dominating all other categories by the sum of frequencies. Meanwhile, all those unique category or combinations of unique categories made up a partition of 34 categories. By doing so, we were attaching labels to each cluster to make them more distinguishable.
 
 The approach we applied was Hierarchical Clustering with K-means. The Hierarchical Clustering was to find out a hierarchical structure of categories based on the proximity matrix of correlations between each pair of categories. Figure 4.3 shows the dendrogram. 
 
@@ -1062,6 +1062,8 @@ kable(tableclust, caption ="**Table 4.5: Result of Hierarachical Clustering with
 ```
 
 One good news is that there exists one to one mapping between ten clusters of categories and ten clusters of consumers. The other good news is that the distribution of the numbers of consumers over ten clusters is extremely close to the distribution in Table 4.3 or Table 4.4. Hence, by comparing the number of consumers, it is straightforward to link the clusters in Table 4.5 to those clusters in Table 4.3 or Table 4.4. The stable clustering structures across different approaches proves that our ten clusters are very robust based on our data.
+
+It should be noted that the labels in Table 4.5 are supplements to categories of each cluster in Table 4.3 or Table 4.4. By labels in Table 4.5, the brand can try to do more accurate advertising or marketing for consumers in any clusters. It also helps the brand to recognize a new consumer. For example, if a new consumer has some crafts posts, just by categories in Table 4.3 or 4.4, it is difficulty to put her into any cluster. But by labels in Table 4.5, we know crafts is more likely to be clustered with movie and art, so it is reasonable to put her in Cluster 7 before having more information about this new consumer.
 
 ## Conclusion
 Based on the above ten clusters of consumers, now we can make some comments.

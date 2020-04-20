@@ -2757,7 +2757,7 @@ Hand-Built Linear Model
 
 <td style="text-align:right;">
 
-11.77936
+11.70088
 
 </td>
 
@@ -2773,7 +2773,7 @@ Forward Selection Linear Model
 
 <td style="text-align:right;">
 
-11.09670
+11.04070
 
 </td>
 
@@ -2789,7 +2789,7 @@ Lasso
 
 <td style="text-align:right;">
 
-12.15521
+12.07130
 
 </td>
 
@@ -2835,8 +2835,8 @@ them reduces the variance.
     ##                      Number of trees: 500
     ## No. of variables tried at each split: 17
     ## 
-    ##           Mean of squared residuals: 50.93137
-    ##                     % Var explained: 78.06
+    ##           Mean of squared residuals: 51.00963
+    ##                     % Var explained: 77.18
 
 The plot below shows that the bagging procedure can produce quite
 accurate predictions most of the time.
@@ -2914,7 +2914,7 @@ LOOCV RMSE Rent Hand-Built Model
 
 <td style="text-align:right;">
 
-11.767772
+11.741489
 
 </td>
 
@@ -2930,7 +2930,7 @@ LOOCV RMSE Rent Forward Selection Model
 
 <td style="text-align:right;">
 
-11.083265
+11.037130
 
 </td>
 
@@ -2946,7 +2946,7 @@ LOOCV RMSE Model Lasso Model
 
 <td style="text-align:right;">
 
-12.139416
+12.118609
 
 </td>
 
@@ -2962,7 +2962,7 @@ LOOCV RMSE Model Bagging Model
 
 <td style="text-align:right;">
 
-7.007038
+6.803130
 
 </td>
 
@@ -2978,7 +2978,7 @@ LOOCV RMSE Model RandomForest Model
 
 <td style="text-align:right;">
 
-7.241770
+7.122188
 
 </td>
 
@@ -6706,28 +6706,28 @@ outdoors
 
 ## Can We Have More Accurate, Unique or Complete Labels?
 
-The first drawback of the result in Table 4.3 also existed in Table 4.2
-and Table 4.4, though in a much less severe way: 27 categories out of 34
-categories were used to differentiate consumers into 10 clusters.
-Probably it was because the rest 7 categories were not discernable
-enough based on the data, but it could be the possibility that our
-method was not refined enough. Of course, we could pick out more
+The first problem of the result in Table 4.3 also exists in Table 4.2
+and Table 4.4, though in a much less evident way: 27 categories out of
+34 categories are used to differentiate consumers into 10 clusters.
+Probably it is because the rest 7 categories are not discernable or
+important enough based on the data, but it could be the possibility that
+our method was not refined enough. Of course, we could pick out more
 categories, say, first six or seven categories with high sums of
 frequencies, from each cluster, to include categories as many as
-possible. However, usually the fourth or fifth category only had a
-relatively much smaller sum of frequencies than those of the first three
-categories. So, including more categories would likely put more
-infrequent or accident tweet into the description of distinct
-preferences. Moreover, some clusters might be not so distinguishable
-from other clusters. For example, Cluster 4 and 5, as well as Cluster 3
-and 6, more likely consisted of the same group of people. The borders
-between those clusters were not so clear. Therefore, in this part, for
+possible. However, usually the categories below the third one only have
+relatively much smaller sums of frequencies than those of the first
+three categories. So, including more categories would be likely to put
+more infrequent or accident tweets into the description of distinct
+preferences. Moreover, some clusters may be not so distinguishable from
+other clusters. For example, Cluster 4 and 5, as well as Cluster 3 and
+6, are more likely to consist of the same group of people. The borders
+between those clusters are not so clear. Therefore, in this part, for
 each of 10 clusters, we tried to find out the unique category or the
 combination of several unique categories dominating all other categories
 by the sum of frequencies. Meanwhile, all those unique category or
 combinations of unique categories made up a partition of 34 categories.
-By doing so, we were attaching more accurate labels to each cluster to
-make them more distinguishable.
+By doing so, we were attaching labels to each cluster to make them more
+distinguishable.
 
 The approach we applied was Hierarchical Clustering with K-means. The
 Hierarchical Clustering was to find out a hierarchical structure of
@@ -7011,6 +7011,16 @@ clusters is extremely close to the distribution in Table 4.3 or Table
 to link the clusters in Table 4.5 to those clusters in Table 4.3 or
 Table 4.4. The stable clustering structures across different approaches
 proves that our ten clusters are very robust based on our data.
+
+It should be noted that the labels in Table 4.5 are supplements to
+categories of each cluster in Table 4.3 or Table 4.4. By labels in Table
+4.5, the brand can try to do more accurate advertising or marketing for
+consumers in any clusters. It also helps the brand to recognize a new
+consumer. For example, if a new consumer has some crafts posts, just by
+categories in Table 4.3 or 4.4, it is difficulty to put her into any
+cluster. But by labels in Table 4.5, we know crafts is more likely to be
+clustered with movie and art, so it is reasonable to put her in Cluster
+7 before having more information about this new consumer.
 
 ## Conclusion
 
