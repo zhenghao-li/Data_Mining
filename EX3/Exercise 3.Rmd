@@ -6,6 +6,7 @@ always_allow_html: yes
 --- 
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
 library(tidyverse)
 library(mosaic)
 library(MASS) 
@@ -28,6 +29,10 @@ library(factoextra)
 library(knitr)
 library(GGally)
 library(scales)
+library(lubridate)
+library(gridExtra)
+library(grid)
+library(lattice)
 ```
 
 # Problem 1. Predictive Model Building
@@ -149,6 +154,7 @@ greenbuildingsNoNA <- na.omit(greenbuildings)
 
 rmse = function(y, yhat) {
   sqrt(mean((y - yhat)^2))}
+
 LoopModels = do(100)*{
   n = nrow(greenbuildingsNoNA)
   n_train = round(0.8*n)  # round to nearest integer
@@ -492,33 +498,6 @@ The researchers suggest that the low decrease in crime in other districts can be
 
 In conclusion, the regressions run in both tables: Table 1 and Table 2 show evidence of decrease in crime when police presence is increased, establishing a causal relationship between police and crime by running a natural experiment where increased police presence is due to other factors than street crime. 
 
----
-title: "Exercise 3"
-author: By Eliza Malinova, Zhenghao Li, and Raushan Baizakova
-output: github_document
-always_allow_html: yes
---- 
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
-library(tidyverse)
-library(mosaic)
-library(MASS) 
-library(tidyverse)
-library(FNN)
-library(dplyr)
-library(ggplot2)
-library(LICORS)  # for kmeans++
-library(foreach)
-library(gridExtra)
-library(lubridate)
-library(kableExtra)
-library(knitr)
-library(GGally)
-library(scales)
-
-```
-
 
 # Problem 3: Clustering and PCA
 ## Overview
@@ -768,7 +747,7 @@ The data contains 7828 twitter followers (consumers) and 36 categories of their 
 ### The Proper K
 K-means is a method to partition observations or features with a high dimension P into lower K dimensions (P>=K). For our purpose, it is to partition 7309 consumers into K clusters. We used CH index to choose a proper value of K.
 
-```{r setup 1.1, results='hide', warning=FALSE, echo=FALSE}
+```{r setup 4.1, results='hide', warning=FALSE, echo=FALSE}
 socialmarketingraw=read.csv('https://raw.githubusercontent.com/jgscott/ECO395M/master/data/social_marketing.csv')
 socialmarketing=filter(socialmarketingraw, socialmarketingraw$spam == 0 & socialmarketingraw$adult == 0)
 X = socialmarketing[ , c(-1, -36, -37)]
@@ -793,7 +772,7 @@ The Figure 4.1 is the elbow plot of CH index. It is not so straightforward to ch
 ### The Result of K-means
 K-means gave us 10 stable clusters of consumers. Then, for each cluster, we calculated the sum of frequencies of each category over all consumers in that cluster. After ordering the categories by sums of frequencies, the first five categories with higher sums of frequencies were picked out to represent that cluster. Also, the number of consumers in each cluster was counted. The ultimate result is shown in Table 4.1. 
 
-```{r setup 1.2,  warning=FALSE, echo=FALSE}
+```{r setup 4.2,  warning=FALSE, echo=FALSE}
 socialmarketingraw=read.csv('https://raw.githubusercontent.com/jgscott/ECO395M/master/data/social_marketing.csv')
 socialmarketing=filter(socialmarketingraw, socialmarketingraw$spam == 0 & socialmarketingraw$adult == 0)
 X = socialmarketing[ , c(-1, -36, -37)]
@@ -868,7 +847,7 @@ In addition, chatter was a common preference over most clusters.
 ### Choose a Scaled Dataset and the Number of Principal Components
 Next, we did segmentation by PCA. Since PCA is sensitive to the scales of data to some degree, before choosing a proper number of principal components, the first thing to do is to compare the effects of differently scaled data on PCA. We used three differently scaled datasets to do that. The first dataset was the one transformed into frequencies. The second one was gotten by doing zero-mean standardization on the frequency dataset. The third one was gotten from doing zero-mean standardization on the original dataset, the one before doing frequency transformation. PVE, the proportion of variance of each principal component, was calculated after doing PCA on each dataset. The Figure 4.1 shows how PVE of each dataset varies with each principal component, where the blue line corresponds to the first dataset, the red line corresponds to the second dataset, and the green one corresponds to the third dataset. Around the elbow part where the number of principal components is about eight to twelve, the blue line has the lowest position, which means the first several principal components of blue one summarize more variance in data. Hence, we chose the frequency dataset to do PCA.
 
-```{r setup 1.3,  warning=FALSE, echo=FALSE}
+```{r setup 4.3,  warning=FALSE, echo=FALSE}
 socialmarketingraw=read.csv('https://raw.githubusercontent.com/jgscott/ECO395M/master/data/social_marketing.csv')
 socialmarketing=filter(socialmarketingraw, socialmarketingraw$spam == 0 & socialmarketingraw$adult == 0)
 X = socialmarketing[ , c(-1, -36, -37)]
@@ -899,7 +878,7 @@ ggplot(data=pvecombine)+
 
 Also based on the location of elbow in Figure 4.2, the first ten principal components were chosen as a proper summary of data. Table 4.2 also justifies our choosing: the first ten principal components include around 73.4 percent variation in data, which means the rest twenty-four principal components only represent 26.6 percent variation in data. So, we believe that the first ten are representative enough for the data.
 
-```{r setup 1.4,  warning=FALSE, echo=FALSE}
+```{r setup 4.4,  warning=FALSE, echo=FALSE}
 socialmarketingraw=read.csv('https://raw.githubusercontent.com/jgscott/ECO395M/master/data/social_marketing.csv')
 socialmarketing=filter(socialmarketingraw, socialmarketingraw$spam == 0 & socialmarketingraw$adult == 0)
 X = socialmarketing[ , c(-1, -36, -37)]
@@ -919,7 +898,7 @@ kable(sum_pca1, caption ="**Table 4.2: Summary of Variations in Principal Compon
 ### The Potential Problems of First Ten Principal Components
 The first ten principal components can be used to differentiate consumers. In each principal component, the importance of categories was measured by loadings. Those categories assigned with high positive loadings were supposed to be closer to each other than other categories so that they were more likely to be in the same cluster.The result was presented in Table 4.3. 
 
-```{r setup 1.5,  warning=FALSE, echo=FALSE}
+```{r setup 4.5,  warning=FALSE, echo=FALSE}
 socialmarketingraw=read.csv('https://raw.githubusercontent.com/jgscott/ECO395M/master/data/social_marketing.csv')
 socialmarketing=filter(socialmarketingraw, socialmarketingraw$spam == 0 & socialmarketingraw$adult == 0)
 X = socialmarketing[ , c(-1, -36, -37)]
@@ -955,7 +934,7 @@ But there are two problems in the above result: it includes only 21 categories o
 ### Use Hierarchical Clustering to Make a Better Clustering
 To solve the problems, we used the scores (indices to indicate the positions of each observation in the projected space) of PCA to construct a distance matrix, which measures the distance between each pair of consumers in the data. By Hierarchical Clustering and cutting the resulting dendrogram, we got 10 clusters of consumers, in accordance with the value of K in K-means. Afterwards, we did the same thing as in K-means after getting 10 clusters. The result is shown in Table 4.4 (To be more distinguishable, we named the clusters as “Pcluster” here). It is the exactly same as in K-means, which strongly implies the robustness of partitioning the market into 10 clusters.
 
-```{r setup 1.6,  warning=FALSE, echo=FALSE}
+```{r setup 4.6,  warning=FALSE, echo=FALSE}
 socialmarketingraw=read.csv('https://raw.githubusercontent.com/jgscott/ECO395M/master/data/social_marketing.csv')
 socialmarketing=filter(socialmarketingraw, socialmarketingraw$spam == 0 & socialmarketingraw$adult == 0)
 X = socialmarketing[ , c(-1, -36, -37)]
@@ -1002,7 +981,7 @@ The first drawback of the result in Table 4.3 also existed in Table 4.2 and Tabl
 
 The approach we applied was Hierarchical Clustering with K-means. The Hierarchical Clustering was to find out a hierarchical structure of categories based on the proximity matrix of correlations between each pair of categories. Figure 4.3 shows the dendrogram. 
 
-```{r setup 1.7, results='hide', warning=FALSE, echo=FALSE}
+```{r setup 4.7, results='hide', warning=FALSE, echo=FALSE}
 socialmarketingraw=read.csv('https://raw.githubusercontent.com/jgscott/ECO395M/master/data/social_marketing.csv')
 socialmarketing=filter(socialmarketingraw, socialmarketingraw$spam == 0 & socialmarketingraw$adult == 0)
 X = socialmarketing[ , c(-1, -36, -37)]
@@ -1017,7 +996,7 @@ plot(hc_corr1, cex=0.8, xlab="", sub="", main="Figure 4.3: Dendrogram of Hierarc
 ```
 Then, we horizontally cut the dendrogram into ten clusters of categories as a partition of 34 categories. Based on the partition, we added up the categories belonging to the same cluster in the frequency dataset, to get a new dataset with 7309 observations and 10 clusters. Then we used K-means to split consumers into 10 clusters of consumers and applied the same procedure as in K-means to attach ten clusters of categories to ten clusters of consumers. The result is shown in Table 4.5 (Again, to bedistinguishable, we named clusters as “Hcluster” here). 
 
-```{r setup 1.8,  warning=FALSE, echo=FALSE}
+```{r setup 4.8,  warning=FALSE, echo=FALSE}
 socialmarketingraw=read.csv('https://raw.githubusercontent.com/jgscott/ECO395M/master/data/social_marketing.csv')
 socialmarketing=filter(socialmarketingraw, socialmarketingraw$spam == 0 & socialmarketingraw$adult == 0)
 X = socialmarketing[ , c(-1, -36, -37)]
