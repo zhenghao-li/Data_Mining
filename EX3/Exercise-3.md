@@ -2988,7 +2988,7 @@ LOOCV RMSE Model RandomForest Model
 
 </table>
 
-**Random Forest as the best predictive model possible**
+**Random Forest and Bagging as the best predictive models possible**
 
 The tree decision models perform almost twice better than the remaining
 three models, based on the RMSE. We decided to use Random Forest as a
