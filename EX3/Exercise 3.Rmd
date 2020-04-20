@@ -549,13 +549,13 @@ clust1w = kmeans(Xw, 2, nstart=25)
 
 p1.1 <- qplot(fixed.acidity, residual.sugar , data=wine, color=factor(clust1w$cluster))
 p1.2 <- qplot(fixed.acidity, residual.sugar , data=wine, color=factor(wine$color))
-grid.arrange(p1.1, p1.2, nrow = 2, top = "**Figure 3.2. Results of K-means clustering for wine colors 
-in the dimensions of fixed acidity and residual sugar**")
+grid.arrange(p1.1, p1.2, nrow = 2, top = "Figure 3.2. Results of K-means clustering for wine colors 
+in the dimensions of fixed acidity and residual sugar")
 
 p1.3 <- qplot(total.sulfur.dioxide, volatile.acidity, data=wine, color=factor(clust1w$cluster))
 p1.4 <- qplot(total.sulfur.dioxide, volatile.acidity, data=wine, color=factor(wine$color))
-grid.arrange(p1.3, p1.4, nrow = 2, top = "**Figure 3.3 Results of K-means clustering for wine colors 
-in the dimensions of total sulfur dioxide and volatile acidity**")
+grid.arrange(p1.3, p1.4, nrow = 2, top = "Figure 3.3 Results of K-means clustering for wine colors 
+in the dimensions of total sulfur dioxide and volatile acidity")
 
 ```
 

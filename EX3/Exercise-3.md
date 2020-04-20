@@ -2757,7 +2757,7 @@ Hand-Built Linear Model
 
 <td style="text-align:right;">
 
-11.74068
+11.73746
 
 </td>
 
@@ -2773,7 +2773,7 @@ Forward Selection Linear Model
 
 <td style="text-align:right;">
 
-11.06275
+11.04073
 
 </td>
 
@@ -2789,7 +2789,7 @@ Lasso
 
 <td style="text-align:right;">
 
-12.11386
+12.11009
 
 </td>
 
@@ -2835,8 +2835,8 @@ them reduces the variance.
     ##                      Number of trees: 500
     ## No. of variables tried at each split: 17
     ## 
-    ##           Mean of squared residuals: 51.90195
-    ##                     % Var explained: 77.69
+    ##           Mean of squared residuals: 50.05855
+    ##                     % Var explained: 77.76
 
 The plot below shows that the bagging procedure can produce quite
 accurate predictions most of the time.
@@ -2914,7 +2914,7 @@ LOOCV RMSE Rent Hand-Built Model
 
 <td style="text-align:right;">
 
-11.729939
+11.745630
 
 </td>
 
@@ -2930,7 +2930,7 @@ LOOCV RMSE Rent Forward Selection Model
 
 <td style="text-align:right;">
 
-11.041656
+11.059895
 
 </td>
 
@@ -2946,7 +2946,7 @@ LOOCV RMSE Model Lasso Model
 
 <td style="text-align:right;">
 
-12.114395
+12.123607
 
 </td>
 
@@ -2962,7 +2962,7 @@ LOOCV RMSE Model Bagging Model
 
 <td style="text-align:right;">
 
-7.082581
+7.004461
 
 </td>
 
@@ -2978,7 +2978,7 @@ LOOCV RMSE Model RandomForest Model
 
 <td style="text-align:right;">
 
-7.408520
+7.327360
 
 </td>
 
@@ -6734,9 +6734,10 @@ Hierarchical Clustering was to find out a hierarchical structure of
 categories based on the proximity matrix of correlations between each
 pair of categories. Figure 4.3 shows the dendrogram.
 
-![](Exercise-3_files/figure-gfm/setup%204.7-1.png)<!-- --> Then, we
-horizontally cut the dendrogram into ten clusters of categories as a
-partition of 34 categories. Based on the partition, we added up the
+![](Exercise-3_files/figure-gfm/setup%204.7-1.png)<!-- -->
+
+Then, we horizontally cut the dendrogram into ten clusters of categories
+as a partition of 34 categories. Based on the partition, we added up the
 categories belonging to the same cluster in the frequency dataset, to
 get a new dataset with 7309 observations and 10 clusters. Then we used
 K-means to split consumers into 10 clusters of consumers and applied the
