@@ -85,7 +85,7 @@ greenbuildingsNoNA <- na.omit(greenbuildings) #exclude all rows with omitted and
 
 tab_model(lm_RentPrice,lm_Rent_Forward, show.ci = FALSE, 
           dv.labels =  c("Hand-Built Linear Model", "Forward Selection Linear Model"),
-          title = "Table 1.0: Coefficients of the Hand-Built and Forward Selection Linear Models",
+          title = "**Table 1.0: Coefficients of the Hand-Built and Forward Selection Linear Models**",
           CSS = list(
             css.depvarhead = 'color: red;',css.summary = 'color: blue;'))
 

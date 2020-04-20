@@ -53,8 +53,8 @@ model, respectively.
 
 <caption style="font-weight: bold; text-align:left;">
 
-Table 1.0: Coefficients of the Hand-Built and Forward Selection Linear
-Models
+**Table 1.0: Coefficients of the Hand-Built and Forward Selection Linear
+Models**
 
 </caption>
 
@@ -2757,7 +2757,7 @@ Hand-Built Linear Model
 
 <td style="text-align:right;">
 
-11.73746
+11.72880
 
 </td>
 
@@ -2773,7 +2773,7 @@ Forward Selection Linear Model
 
 <td style="text-align:right;">
 
-11.04073
+11.02169
 
 </td>
 
@@ -2789,7 +2789,7 @@ Lasso
 
 <td style="text-align:right;">
 
-12.11009
+12.10260
 
 </td>
 
@@ -2835,8 +2835,8 @@ them reduces the variance.
     ##                      Number of trees: 500
     ## No. of variables tried at each split: 17
     ## 
-    ##           Mean of squared residuals: 50.05855
-    ##                     % Var explained: 77.76
+    ##           Mean of squared residuals: 49.81069
+    ##                     % Var explained: 78.06
 
 The plot below shows that the bagging procedure can produce quite
 accurate predictions most of the time.
@@ -2914,7 +2914,7 @@ LOOCV RMSE Rent Hand-Built Model
 
 <td style="text-align:right;">
 
-11.745630
+11.751074
 
 </td>
 
@@ -2930,7 +2930,7 @@ LOOCV RMSE Rent Forward Selection Model
 
 <td style="text-align:right;">
 
-11.059895
+11.079504
 
 </td>
 
@@ -2946,7 +2946,7 @@ LOOCV RMSE Model Lasso Model
 
 <td style="text-align:right;">
 
-12.123607
+12.134005
 
 </td>
 
@@ -2962,7 +2962,7 @@ LOOCV RMSE Model Bagging Model
 
 <td style="text-align:right;">
 
-7.004461
+6.905187
 
 </td>
 
@@ -2978,7 +2978,7 @@ LOOCV RMSE Model RandomForest Model
 
 <td style="text-align:right;">
 
-7.327360
+7.174868
 
 </td>
 
