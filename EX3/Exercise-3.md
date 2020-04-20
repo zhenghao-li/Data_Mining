@@ -2757,7 +2757,7 @@ Hand-Built Linear Model
 
 <td style="text-align:right;">
 
-11.70088
+11.74068
 
 </td>
 
@@ -2773,7 +2773,7 @@ Forward Selection Linear Model
 
 <td style="text-align:right;">
 
-11.04070
+11.06275
 
 </td>
 
@@ -2789,7 +2789,7 @@ Lasso
 
 <td style="text-align:right;">
 
-12.07130
+12.11386
 
 </td>
 
@@ -2835,8 +2835,8 @@ them reduces the variance.
     ##                      Number of trees: 500
     ## No. of variables tried at each split: 17
     ## 
-    ##           Mean of squared residuals: 51.00963
-    ##                     % Var explained: 77.18
+    ##           Mean of squared residuals: 51.90195
+    ##                     % Var explained: 77.69
 
 The plot below shows that the bagging procedure can produce quite
 accurate predictions most of the time.
@@ -2914,7 +2914,7 @@ LOOCV RMSE Rent Hand-Built Model
 
 <td style="text-align:right;">
 
-11.741489
+11.729939
 
 </td>
 
@@ -2930,7 +2930,7 @@ LOOCV RMSE Rent Forward Selection Model
 
 <td style="text-align:right;">
 
-11.037130
+11.041656
 
 </td>
 
@@ -2946,7 +2946,7 @@ LOOCV RMSE Model Lasso Model
 
 <td style="text-align:right;">
 
-12.118609
+12.114395
 
 </td>
 
@@ -2962,7 +2962,7 @@ LOOCV RMSE Model Bagging Model
 
 <td style="text-align:right;">
 
-6.803130
+7.082581
 
 </td>
 
@@ -2978,7 +2978,7 @@ LOOCV RMSE Model RandomForest Model
 
 <td style="text-align:right;">
 
-7.122188
+7.408520
 
 </td>
 

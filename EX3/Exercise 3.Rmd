@@ -994,6 +994,7 @@ d_Xscorr=dist(Xs_corr)
 hc_corr1=hclust(d_Xscorr, method = "complete")
 plot(hc_corr1, cex=0.8, xlab="", sub="", main="Figure 4.3: Dendrogram of Hierarchical Clustering of Categories")
 ```
+
 Then, we horizontally cut the dendrogram into ten clusters of categories as a partition of 34 categories. Based on the partition, we added up the categories belonging to the same cluster in the frequency dataset, to get a new dataset with 7309 observations and 10 clusters. Then we used K-means to split consumers into 10 clusters of consumers and applied the same procedure as in K-means to attach ten clusters of categories to ten clusters of consumers. The result is shown in Table 4.5 (Again, to bedistinguishable, we named clusters as “Hcluster” here). 
 
 ```{r setup 4.8,  warning=FALSE, echo=FALSE}
