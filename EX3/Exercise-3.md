@@ -2856,7 +2856,7 @@ each split, a new sample of these 4 predictors is taken.
 
 By using a different sample of 4 predictors in each split instead of all
 17 variables, we avoid the highly correlated predictions that result
-from bagging. Random forest produced less correlated predictions. In the
+from bagging. Random forest produces less correlated predictions. In the
 bagging procedure, since all variables are used, majority of trees will
 use the strong predictor at the top of tree, which will result in
 increased correlation of the predictions. Hence, bagging will usually
